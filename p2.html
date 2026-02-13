@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fezai Rayen - Portfolio Professionnel</title>
+    <meta name="description" content="Portfolio de Fezai Rayen - Spécialiste en Commerce International & Développement Web. Digitalisation des processus logistiques.">
+    <meta name="author" content="Fezai Rayen">
+    <meta name="keywords" content="commerce international, développement web, logistique, digitalisation, portfolio, AI automation, n8n">
+    
+    <meta property="og:title" content="Fezai Rayen - Portfolio Professionnel">
+    <meta property="og:description" content="Spécialiste en Commerce International & Développement Web. Digitalisation des processus logistiques.">
+    <meta property="og:type" content="website">
+    
+    <style>
+        /* ===== ULTRA COMPACT MOBILE VERSION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            width: 100%;
+            line-height: 1.4;
+        }
+
+        /* ===== HEADER CONTROLS (COMPACT) ===== */
+        .code-logo {
+            position: fixed;
+            top: 8px;
+            left: 8px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        /* ===== PARTICLES (HIDDEN ON MOBILE) ===== */
+        .floating-particles {
+            display: none;
+        }
+
+        /* ===== HERO SECTION (ULTRA COMPACT) ===== */
+        .hero-section {
+            min-height: auto;
+            padding: 3rem 0.75rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+            padding: 2px;
+            margin: 0 auto;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .floating-icons {
+            display: none;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #a8c0ff 0%, #c5a3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.3;
+        }
+
+        .description {
+            font-size: 0.75rem;
+            color: #64b5f6;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .passion-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+
+        .passion-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            color: #64b5f6;
+        }
+
+        .passion-box p:last-child {
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        /* ===== BUTTONS (COMPACT) ===== */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            width: 100%;
+            text-align: center;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        /* ===== SECTIONS (ULTRA COMPACT) ===== */
+        .section {
+            padding: 1.5rem 0.75rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(135deg, #64b5f6 0%, #a8c0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            background: #64b5f6;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        /* ===== GRIDS (COMPACT) ===== */
+        .expertise-grid,
+        .skills-grid,
+        .contact-grid,
+        .stats-grid,
+        .features-grid,
+        .tech-grid,
+        .formation-grid,
+        .expertise-areas,
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            width: 100%;
+        }
+
+        /* ===== CARDS (COMPACT) ===== */
+        .expertise-card,
+        .skill-category,
+        .formation-card,
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            width: 100%;
+        }
+
+        .stat-card,
+        .feature-card,
+        .area-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .expertise-header,
+        .skill-title {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #64b5f6;
+        }
+
+        .expertise-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        /* ===== STATS (COMPACT) ===== */
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 0.4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #64b5f6;
+            text-align: center;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        /* ===== SKILLS (COMPACT) ===== */
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #4caf50;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+
+        /* ===== TIMELINE (COMPACT) ===== */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -22px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .exp-header {
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .exp-company {
+            color: #64b5f6;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .exp-location {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.3rem;
+            font-size: 0.7rem;
+        }
+
+        .exp-date {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .exp-tag {
+            padding: 0.2rem 0.5rem;
+            background: rgba(100, 181, 246, 0.2);
+            border-radius: 6px;
+            font-size: 0.65rem;
+        }
+
+        /* ===== PROJECT SHOWCASE (COMPACT) ===== */
+        .project-showcase {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem 0.8rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-logo {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .project-subtitle {
+            color: #64b5f6;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-badges {
+            display: flex;
+            gap: 0.3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .project-badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.65rem;
+        }
+
+        .badge-primary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .badge-info { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .badge-success { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+        .project-vision {
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .vision-title {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-vision p {
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .feature-desc {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.4;
+        }
+
+        .tech-stack {
+            margin-top: 1rem;
+        }
+
+        .tech-title {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tech-item {
+            padding: 0.6rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        .tech-item:nth-child(1) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .tech-item:nth-child(2) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .tech-item:nth-child(3) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .tech-item:nth-child(4) { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .tech-item:nth-child(5) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .tech-item:nth-child(6) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .tech-item:nth-child(7) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .tech-item:nth-child(8) { background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%); }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(0, 255, 127, 0.05);
+            border-radius: 8px;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .impact-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .impact-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+        }
+
+        /* ===== FORMATIONS (COMPACT) ===== */
+        .formation-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .formation-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+
+        .formation-school {
+            color: #64b5f6;
+            margin-bottom: 0.2rem;
+            font-size: 0.75rem;
+        }
+
+        .formation-year {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-card {
+            text-align: center;
+        }
+
+        .competences-list {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .competence-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: rgba(100, 181, 246, 0.2);
+            border-radius: 6px;
+            font-size: 0.65rem;
+            margin: 0.15rem;
+        }
+
+        /* ===== CONTACT (COMPACT) ===== */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.6rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card > div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .contact-card > div > div:first-child {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.1rem;
+        }
+
+        .contact-card > div > div:last-child {
+            font-weight: 600;
+            font-size: 0.75rem;
+            word-break: break-word;
+        }
+
+        .availability-card {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+        }
+
+        .availability-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.75rem;
+        }
+
+        .availability-item:last-child {
+            border-bottom: none;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #64b5f6;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== FOOTER (COMPACT) ===== */
+        footer {
+            text-align: center;
+            padding: 1rem 0.75rem;
+            background: rgba(0,0,0,0.3);
+            margin-top: 1rem;
+        }
+
+        footer > div > div:first-child {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        footer h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: #64b5f6;
+        }
+
+        footer h4 {
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        footer p, footer span {
+            font-size: 0.7rem;
+            line-height: 1.5;
+        }
+
+        /* ===== ANIMATIONS (MINIMAL) ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== AREA CARD ===== */
+        .area-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: 0.8rem;
+        }
+
+        .area-desc {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== RESPONSIVE: TABLET (min-width: 768px) ===== */
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+
+            .code-logo {
+                font-size: 2rem;
+                top: 20px;
+                left: 20px;
+            }
+
+            .dark-mode-toggle {
+                width: 50px;
+                height: 50px;
+                top: 20px;
+                right: 20px;
+                font-size: 1.2rem;
+            }
+
+            .hero-section {
+                padding: 2rem;
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
+                border: 4px solid transparent;
+                padding: 4px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .passion-box {
+                padding: 2rem;
+            }
+
+            .buttons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                width: auto;
+                padding: 1rem 2rem;
+            }
+
+            .section {
+                padding: 4rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .expertise-areas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .formation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .impact-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .timeline {
+                padding-left: 50px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-icon {
+                left: -48px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: DESKTOP (min-width: 1024px) ===== */
+        @media (min-width: 1024px) {
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 5rem 2rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .formation-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo code -->
+    <div class="code-logo">&lt;/&gt;</div>
+
+    <!-- Bouton mode sombre -->
+    <div class="dark-mode-toggle">🌙</div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="9bdb7549-28f4-4447-bf6c-9b5309881bf4.jpg" alt="Fezai Rayen">
+                </div>
+            </div>
+            
+            <h1>FEZAI RAYEN</h1>
+            <p class="subtitle">Spécialiste Commerce International & Développeur Full Stack</p>
+            <p class="description">"Transformer les défis logistiques en solutions digitales innovantes"</p>
+            
+            <div class="passion-box">
+                <p class="passion-title">✨ Ma Mission</p>
+                <p>Révolutionner le <span style="color: #64b5f6;">commerce international</span> grâce à la <span style="color: #64b5f6;">digitalisation des processus logistiques</span>. Je crée des solutions innovantes qui optimisent les échanges commerciaux mondiaux.</p>
+            </div>
+            
+            <div class="buttons">
+                <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo">🎥 Démo CORAZÓN</a>
+                <a href="#projet" class="btn btn-primary">🚀 Projets</a>
+                <a href="#contact" class="btn btn-secondary">✉️ Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expertise -->
+    <section class="section fade-in">
+        <h2 class="section-title">🌍 Commerce International 📈</h2>
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <span class="badge">Expert Digitalisation Logistique</span>
+        </div>
+        
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3 class="expertise-header">🎯 Mon Expertise</h3>
+                <p class="expertise-text">
+                    Diplômé en <strong>TCI</strong> de l'ISET Radès, spécialisé dans la <span style="color: #64b5f6;">digitalisation logistique</span> et l'optimisation des chaînes d'approvisionnement internationales.
+                </p>
+                <p class="expertise-text">
+                    Ma passion : <span style="color: #64b5f6;">transformer les défis en opportunités digitales</span> grâce aux technologies innovantes.
+                </p>
+                <div style="background: rgba(100, 181, 246, 0.1); padding: 0.6rem; border-radius: 6px; border-left: 2px solid #64b5f6;">
+                    <h4 style="color: #64b5f6; margin-bottom: 0.3rem; font-size: 0.8rem;">🎯 Objectif</h4>
+                    <p style="font-size: 0.7rem;">Révolutionner les processus commerciaux par la digitalisation et l'automatisation.</p>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="expertise-areas">
+            <div class="area-card">
+                <div class="area-title">🌍 Commerce International</div>
+                <div class="area-desc">Import/Export & Négociation</div>
+            </div>
+            <div class="area-card">
+                <div class="area-title">📈 Logistique Digitale</div>
+                <div class="area-desc">Optimisation des flux</div>
+            </div>
+            <div class="area-card">
+                <div class="area-title">👥 Gestion Multiculturelle</div>
+                <div class="area-desc">Équipes internationales</div>
+            </div>
+            <div class="area-card">
+                <div class="area-title">🎯 Solutions Sur Mesure</div>
+                <div class="area-desc">Développement personnalisé</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="competences" class="section fade-in">
+        <h2 class="section-title">Mes Compétences</h2>
+        <p class="section-subtitle">Expertise polyvalente en commerce, développement et digitalisation</p>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">🌐</div>
+                    <div class="skill-title">Commerce & Logistique</div>
+                </div>
+                <ul class="skill-list">
+                    <li class="skill-item"><span class="check-icon">✓</span> Règlementations & Incoterms</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Chaîne logistique globale</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Sourcing international</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Front & Back Office</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Service multiculturel</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Droit commercial</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Négociation</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">95%</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">📈</div>
+                    <div class="skill-title">Marketing Digital</div>
+                </div>
+                <ul class="skill-list">
+                    <li class="skill-item"><span class="check-icon">✓</span> Stratégie marketing</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Marketing digital</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Réseaux sociaux</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Études de marché</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Analyse données & KPI</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Compétences analytiques</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">90%</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">💻</div>
+                    <div class="skill-title">Développement Full Stack</div>
+                </div>
+                <ul class="skill-list">
+                    <li class="skill-item"><span class="check-icon">✓</span> HTML5, CSS3, JavaScript</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> React, Node, TypeScript</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> PHP, MySQL, PostgreSQL</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> UX/UI & Responsive</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> API REST</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Architecture logicielle</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Optimisation</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 92%"></div>
+                </div>
+                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">92%</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">🤖</div>
+                    <div class="skill-title">Automation & IA</div>
+                </div>
+                <ul class="skill-list">
+                    <li class="skill-item"><span class="check-icon">✓</span> AI Automation</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> n8n - Workflow</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Automatisation processus</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Chatbots IA</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Optimisation workflow</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> RPA</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 88%"></div>
+                </div>
+                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">88%</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-header">
+                    <div class="skill-icon">⚙️</div>
+                    <div class="skill-title">Outils Professionnels</div>
+                </div>
+                <ul class="skill-list">
+                    <li class="skill-item"><span class="check-icon">✓</span> ERP et CRM</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Plateformes logistiques</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Excel & Power BI</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Adobe Creative Suite</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Git, Docker, AWS</li>
+                    <li class="skill-item"><span class="check-icon">✓</span> Agile/Scrum</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">90%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences -->
+    <section class="section fade-in">
+        <h2 class="section-title">Expériences</h2>
+        <p class="section-subtitle">Parcours diversifié en commerce, service et innovation</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon">🚢</div>
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-title">Stagiaire - Service Commercial</h3>
+                        <p class="exp-company">SOCOTU Tunisie</p>
+                        <p class="exp-location">📍 Tunis, Tunisie</p>
+                        <div class="exp-date">Mai 2024 - Juin 2025</div>
+                    </div>
+                </div>
+                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Développement CORAZÓN DIGITAL pour digitalisation logistique. Gestion complète du projet avec analyse besoins, UX/UI et développement.</p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Commerce</span>
+                    <span class="exp-tag">Logistique</span>
+                    <span class="exp-tag">Dev Web</span>
+                    <span class="exp-tag">Gestion projet</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">🏨</div>
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-title">Serveur</h3>
+                        <p class="exp-company">Hôtel Mouradi Gammarth</p>
+                        <p class="exp-location">📍 Gammarth</p>
+                        <div class="exp-date">2023-2024</div>
+                    </div>
+                </div>
+                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Service client luxe international, gestion clientèle multilingue. Communication interculturelle.</p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Service client</span>
+                    <span class="exp-tag">Langues</span>
+                    <span class="exp-tag">Interculturel</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">⛽</div>
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-title">Responsable station</h3>
+                        <p class="exp-company">Shell Sejoumi</p>
+                        <p class="exp-location">📍 Sejoumi</p>
+                        <div class="exp-date">2022</div>
+                    </div>
+                </div>
+                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Gestion station lavage, optimisation processus, management équipe.</p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Management</span>
+                    <span class="exp-tag">Optimisation</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">🎨</div>
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-title">Artisan</h3>
+                        <p class="exp-company">Carthage Salambo</p>
+                        <p class="exp-location">📍 Carthage</p>
+                        <div class="exp-date">2019-2021</div>
+                    </div>
+                </div>
+                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Création objets artisanaux tunisiens pour exportation internationale.</p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Artisanat</span>
+                    <span class="exp-tag">Export</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projet Phare -->
+    <section id="projet" class="section fade-in">
+        <h2 class="section-title">⚡ Projet Phare</h2>
+        <p class="section-subtitle">CORAZÓN DIGITAL révolutionne la logistique moderne</p>
+        
+        <div class="project-showcase">
+            <div class="project-header">
+                <div class="project-logo">❤️</div>
+                <h3 class="project-name">CORAZÓN DIGITAL</h3>
+                <p class="project-subtitle">Digitalisation Logistique</p>
+                <div class="project-badges">
+                    <span class="project-badge badge-primary">🚀 Principal</span>
+                    <span class="project-badge badge-info">🏢 SOCOTU</span>
+                    <span class="project-badge badge-success">🔄 2024-25</span>
+                </div>
+                <div style="margin-top: 0.8rem;">
+                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo" style="font-size: 0.75rem; padding: 0.6rem 1rem;">
+                        🎥 Voir Démo
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-vision">
+                <h4 class="vision-title">⚡ Vision</h4>
+                <p>Transforme les processus logistiques en <span style="color: #64b5f6;">expérience digitale fluide</span>. Automatise la gestion, optimise les opérations.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <div class="feature-title">Interface Intuitive</div>
+                    <p class="feature-desc">Design moderne optimisé</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Performance</div>
+                    <p class="feature-desc">Ultra-rapide et réactif</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-title">Sécurité</div>
+                    <p class="feature-desc">Protection renforcée</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">Multi-utilisateurs</div>
+                    <p class="feature-desc">Rôles et permissions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Analytics</div>
+                    <p class="feature-desc">Rapports temps réel</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-title">Intégration API</div>
+                    <p class="feature-desc">Services externes</p>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <h4 class="tech-title">⚡ Stack Tech</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">React.js</div>
+                    <div class="tech-item">Node.js</div>
+                    <div class="tech-item">PostgreSQL</div>
+                    <div class="tech-item">Docker</div>
+                    <div class="tech-item">TypeScript</div>
+                    <div class="tech-item">Tailwind</div>
+                    <div class="tech-item">Redis</div>
+                    <div class="tech-item">AWS</div>
+                </div>
+            </div>
+
+            <div class="impact-stats">
+                <div class="impact-item">
+                    <div class="impact-icon">⚡</div>
+                    <div class="impact-value">95%</div>
+                    <div class="impact-label">Réduction temps</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon">👥</div>
+                    <div class="impact-value">50+</div>
+                    <div class="impact-label">Utilisateurs actifs</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon">🛡️</div>
+                    <div class="impact-value">99.9%</div>
+                    <div class="impact-label">Disponibilité</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1rem; padding: 0.8rem; background: rgba(100, 181, 246, 0.1); border-radius: 8px;">
+                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Intéressé ?</h4>
+                <p style="margin-bottom: 0.8rem; color: rgba(255,255,255,0.8); font-size: 0.75rem;">Créons des solutions similaires</p>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo">
+                        🎥 Démo
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        💬 Discuter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations -->
+    <section class="section fade-in">
+        <h2 class="section-title">Formations</h2>
+        <p class="section-subtitle">Formation spécialisée commerce & tech</p>
+        
+        <div class="formation-grid">
+            <div class="formation-card">
+                <div class="formation-icon">🎓</div>
+                <h3 class="formation-title">Licence TCI</h3>
+                <p class="formation-school">ISET Radès</p>
+                <p class="formation-year">2022 - 2025</p>
+                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Formation commerce international, logistique, incoterms, douanes et digitalisation.</p>
+                <div class="competences-list">
+                    <span class="competence-badge">Commerce</span>
+                    <span class="competence-badge">Logistique</span>
+                    <span class="competence-badge">Incoterms</span>
+                    <span class="competence-badge">Douanes</span>
+                    <span class="competence-badge">Import/Export</span>
+                </div>
+            </div>
+
+            <div class="formation-card">
+                <div class="formation-icon">🇬🇧</div>
+                <h3 class="formation-title">Anglais B2</h3>
+                <p class="formation-school">Institut Bourguiba</p>
+                <p class="formation-year">2023</p>
+                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Anglais professionnel pour échanges commerciaux et négociation.</p>
+                <div class="competences-list">
+                    <span class="competence-badge">Anglais commercial</span>
+                    <span class="competence-badge">Communication</span>
+                    <span class="competence-badge">Négociation</span>
+                </div>
+            </div>
+
+            <div class="formation-card">
+                <div class="formation-icon">💻</div>
+                <h3 class="formation-title">Dev Web Full Stack</h3>
+                <p class="formation-school">Udemy</p>
+                <p class="formation-year">2023 - 2024</p>
+                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Formation développement web moderne appliqué au commerce international.</p>
+                <div class="competences-list">
+                    <span class="competence-badge">HTML5</span>
+                    <span class="competence-badge">CSS3</span>
+                    <span class="competence-badge">JavaScript</span>
+                    <span class="competence-badge">PHP</span>
+                    <span class="competence-badge">MySQL</span>
+                    <span class="competence-badge">UX/UI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section fade-in">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Digitalisons vos processus logistiques</p>
+        
+        <div class="contact-grid">
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Informations</h3>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <div>Téléphone</div>
+                            <div>+216 52374459</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <div>WhatsApp</div>
+                            <div><a href="https://wa.me/21652374459" style="color: inherit; text-decoration: none;">+216 52374459</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <div>Email</div>
+                            <div><a href="https://mail.google.com/mail/u/0/#inbox" style="color: inherit; text-decoration: none;"><span class="__cf_email__" data-cfemail="f9bf9c839890d78b98809c97b99e94989095d79a9694">fezaii.rayen</span></a></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <div>
+                            <div>LinkedIn</div>
+                            <div><a href="https://www.linkedin.com/in/fezai-rayen-07934a34a/" target="_blank" style="color: inherit; text-decoration: none;">Fezai Rayen</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📘</div>
+                        <div>
+                            <div>Facebook</div>
+                            <div><a href="https://www.facebook.com/profile.php?id=100070361403118" target="_blank" style="color: inherit; text-decoration: none;">Fezai Rayen</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <div>Localisation</div>
+                            <div>Tunis, El Omrane</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="availability-card">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">📅 Disponibilité</h4>
+                    <div class="availability-item">
+                        <span>Réponse</span>
+                        <strong>&lt; 24h</strong>
+                    </div>
+                    <div class="availability-item">
+                        <span>Consultation</span>
+                        <strong>Gratuite</strong>
+                    </div>
+                    <div class="availability-item">
+                        <span>Places</span>
+                        <strong>2-3 dispo</strong>
+                    </div>
+                    <div class="availability-item">
+                        <span>Langues</span>
+                        <strong>FR, EN, AR</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">✉️ Message</h3>
+                <form action="mailto:Fezai.rayen@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label>Nom *</label>
+                        <input type="text" name="nom" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" placeholder="email@exemple.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Entreprise</label>
+                        <input type="text" name="entreprise" placeholder="Entreprise (optionnel)">
+                    </div>
+                    <div class="form-group">
+                        <label>Sujet *</label>
+                        <input type="text" name="sujet" placeholder="Objet" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea name="message" placeholder="Votre projet..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">✉️ Envoyer</button>
+                </form>
+                
+                <div style="margin-top: 0.8rem; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.7rem; margin-bottom: 0.5rem;">Ou directement :</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="https://wa.me/21652374459" target="_blank" class="btn btn-secondary">
+                            💬 WhatsApp
+                        </a>
+                        <a href="/cdn-cgi/l/email-protection#f0b6958a9199de829189959eb0979d91999cde939f9d" class="btn btn-secondary">
+                            ✉️ Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div>
+                <div style="text-align: center;">
+                    <h3>Fezai Rayen</h3>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 0.8rem;">
+                        Spécialiste Commerce International & Expert Digitalisation Logistique. Solutions innovantes pour optimiser les échanges mondiaux.
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <h4>Domaines</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.3rem; align-items: center;">
+                        <span style="color: rgba(255,255,255,0.6);">• Commerce International</span>
+                        <span style="color: rgba(255,255,255,0.6);">• Logistique Digitale</span>
+                        <span style="color: rgba(255,255,255,0.6);">• Développement Web</span>
+                        <span style="color: rgba(255,255,255,0.6);">• AI Automation</span>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.8rem; margin-top: 1rem; text-align: center;">
+                <p style="color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">&copy; 2025 Fezai Rayen. Tous droits réservés.</p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.3rem; color: rgba(255,255,255,0.5);">
+                    <span>🌍</span>
+                    <span>Expert solutions digitales</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Progress bars
+        const progressBars = document.querySelectorAll('.progress-fill');
+        const progressObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target;
+                    const width = progressBar.style.width;
+                    progressBar.style.width = '0';
+                    setTimeout(() => {
+                        progressBar.style.width = width;
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        progressBars.forEach(bar => {
+            progressObserver.observe(bar);
+        });
+
+        // Dark mode toggle
+        document.querySelector('.dark-mode-toggle').addEventListener('click', function() {
+            document.body.style.filter = document.body.style.filter === 'invert(1) hue-rotate(180deg)' ? '' : 'invert(1) hue-rotate(180deg)';
+            this.textContent = this.textContent === '🌙' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
