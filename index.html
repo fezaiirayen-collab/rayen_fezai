@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,42 @@
     <meta property="og:type" content="website">
     
     <style>
-        /* ===== ULTRA COMPACT MOBILE VERSION ===== */
+        /* ===== CSS VARIABLES - SYSTÈME DE SPACING GLOBAL ===== */
+        :root {
+            /* Spacing System (8px base) */
+            --space-xs: 0.25rem;   /* 4px */
+            --space-sm: 0.5rem;    /* 8px */
+            --space-md: 0.75rem;   /* 12px */
+            --space-lg: 1rem;      /* 16px */
+            --space-xl: 1.5rem;    /* 24px */
+            --space-2xl: 2rem;     /* 32px */
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+            
+            /* Colors */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-color: #64b5f6;
+            --text-primary: #fff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+            
+            /* Typography */
+            --font-xs: 0.65rem;
+            --font-sm: 0.7rem;
+            --font-base: 0.75rem;
+            --font-md: 0.8rem;
+            --font-lg: 0.9rem;
+            --font-xl: 1rem;
+            --font-2xl: 1.2rem;
+        }
+
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -24,12 +59,13 @@
             overflow-x: hidden;
             width: 100%;
             font-size: 14px;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #fff;
+            color: var(--text-primary);
             overflow-x: hidden;
             width: 100%;
             line-height: 1.4;
@@ -38,9 +74,9 @@
         /* ===== HEADER CONTROLS (COMPACT) ===== */
         .code-logo {
             position: fixed;
-            top: 8px;
-            left: 8px;
-            font-size: 1rem;
+            top: var(--space-sm);
+            left: var(--space-sm);
+            font-size: var(--font-xl);
             color: rgba(255, 255, 255, 0.5);
             z-index: 1000;
             font-weight: bold;
@@ -48,19 +84,24 @@
 
         .dark-mode-toggle {
             position: fixed;
-            top: 8px;
-            right: 8px;
-            width: 36px;
-            height: 36px;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            width: 32px;
+            height: 32px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            font-size: 0.9rem;
+            font-size: var(--font-md);
+            transition: background 0.2s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
         /* ===== PARTICLES (HIDDEN ON MOBILE) ===== */
@@ -71,7 +112,7 @@
         /* ===== HERO SECTION (ULTRA COMPACT) ===== */
         .hero-section {
             min-height: auto;
-            padding: 3rem 0.75rem 1.5rem;
+            padding: 2.5rem var(--space-md) var(--space-lg);
             position: relative;
             z-index: 1;
         }
@@ -79,20 +120,22 @@
         .hero-content {
             text-align: center;
             width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .profile-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 0.8rem;
+            margin-bottom: var(--space-sm);
         }
 
         .profile-image {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 2px solid transparent;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+            background: var(--primary-gradient) border-box;
             padding: 2px;
             margin: 0 auto;
         }
@@ -110,84 +153,93 @@
         }
 
         h1 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             background: linear-gradient(135deg, #a8c0ff 0%, #c5a3ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.4rem;
+            margin-bottom: var(--space-xs);
             font-weight: 800;
             line-height: 1.2;
         }
 
         .subtitle {
-            font-size: 0.8rem;
-            margin-bottom: 0.3rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: var(--font-base);
+            margin-bottom: var(--space-xs);
+            color: var(--text-secondary);
             line-height: 1.3;
         }
 
         .description {
-            font-size: 0.75rem;
-            color: #64b5f6;
-            margin-bottom: 0.8rem;
-            line-height: 1.4;
+            font-size: var(--font-sm);
+            color: var(--accent-color);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
         }
 
         .passion-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.8rem;
-            margin: 0.8rem 0;
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-sm) 0;
         }
 
         .passion-title {
-            font-size: 0.85rem;
-            margin-bottom: 0.4rem;
-            color: #64b5f6;
+            font-size: var(--font-md);
+            margin-bottom: var(--space-xs);
+            color: var(--accent-color);
         }
 
         .passion-box p:last-child {
-            font-size: 0.75rem;
+            font-size: var(--font-sm);
             line-height: 1.4;
         }
 
-        /* ===== BUTTONS (COMPACT) ===== */
+        /* ===== BUTTONS (COMPACT - OPTIMISÉ) ===== */
         .buttons {
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
             width: 100%;
+            justify-content: center;
         }
 
         .btn {
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.3rem;
+            gap: var(--space-xs);
             border: none;
             cursor: pointer;
-            font-size: 0.75rem;
-            width: 100%;
+            font-size: var(--font-sm);
+            flex: 1;
+            min-width: 90px;
+            max-width: 120px;
             text-align: center;
             box-shadow: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-gradient);
             color: white;
         }
 
         .btn-secondary {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.6);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-color);
         }
 
         .btn-demo {
@@ -197,16 +249,16 @@
 
         /* ===== SECTIONS (ULTRA COMPACT) ===== */
         .section {
-            padding: 1.5rem 0.75rem;
+            padding: var(--space-lg) var(--space-md);
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
         .section-title {
-            font-size: 1.2rem;
+            font-size: var(--font-2xl);
             text-align: center;
-            margin-bottom: 0.4rem;
+            margin-bottom: var(--space-xs);
             background: linear-gradient(135deg, #64b5f6 0%, #a8c0ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -216,23 +268,23 @@
 
         .section-subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1rem;
-            font-size: 0.75rem;
-            line-height: 1.4;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+            font-size: var(--font-sm);
+            line-height: 1.3;
         }
 
         .badge {
             display: inline-block;
-            padding: 0.3rem 0.6rem;
-            background: #64b5f6;
-            border-radius: 12px;
-            margin-bottom: 0.8rem;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--accent-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-sm);
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: var(--font-xs);
         }
 
-        /* ===== GRIDS (COMPACT) ===== */
+        /* ===== GRIDS (COMPACT - OPTIMISÉ) ===== */
         .expertise-grid,
         .skills-grid,
         .contact-grid,
@@ -244,116 +296,128 @@
         .contact-info {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 0.8rem;
+            gap: var(--space-sm);
             width: 100%;
         }
 
-        /* ===== CARDS (COMPACT & OPTIMIZED FOR MOBILE) ===== */
+        /* ===== CARDS (COMPACT & OPTIMIZED) ===== */
         .expertise-card,
         .skill-category,
         .formation-card,
         .contact-form {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.8rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
             width: 100%;
         }
 
         .stat-card,
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem;
-            border-radius: 8px;
+            background: var(--bg-card-hover);
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
             width: 100%;
         }
 
-        /* ===== AREA CARD - OPTIMIZED FOR MOBILE ===== */
+        /* ===== AREA CARD - ULTRA COMPACT ===== */
         .area-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 0.7rem;
-            border-radius: 8px;
+            background: var(--bg-card-hover);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
             width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
+            align-items: center;
+            gap: var(--space-xs);
         }
 
         .area-title {
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: var(--font-sm);
             line-height: 1.2;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .area-desc {
-            font-size: 0.68rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.3;
+            font-size: var(--font-xs);
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        /* Area cards en grille 2 colonnes sur mobile */
+        .expertise-areas {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xs);
         }
 
         .expertise-header,
         .skill-title {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: #64b5f6;
+            font-size: var(--font-md);
+            margin-bottom: var(--space-xs);
+            color: var(--accent-color);
         }
 
         .expertise-text {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.5;
-            margin-bottom: 0.5rem;
-            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-sm);
         }
 
         /* ===== STATS (COMPACT) ===== */
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xs);
+        }
+
         .stat-icon {
-            width: 32px;
-            height: 32px;
-            margin: 0 auto 0.4rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            margin: 0 auto var(--space-xs);
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: var(--font-lg);
         }
 
         .stat-number {
-            font-size: 1.4rem;
+            font-size: var(--font-2xl);
             font-weight: bold;
-            color: #64b5f6;
+            color: var(--accent-color);
             text-align: center;
         }
 
         .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-size: var(--font-xs);
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .stat-card {
             text-align: center;
+            padding: var(--space-xs);
         }
 
         /* ===== SKILLS (COMPACT & OPTIMIZED) ===== */
         .skill-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.6rem;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-xs);
         }
 
         .skill-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: var(--font-lg);
             flex-shrink: 0;
         }
 
@@ -362,13 +426,13 @@
         }
 
         .skill-item {
-            padding: 0.35rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-xs) 0;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.72rem;
-            line-height: 1.3;
+            gap: var(--space-xs);
+            font-size: var(--font-sm);
+            line-height: 1.2;
         }
 
         .skill-item:last-child {
@@ -377,152 +441,153 @@
 
         .check-icon {
             color: #4caf50;
-            font-size: 0.75rem;
+            font-size: var(--font-sm);
             flex-shrink: 0;
         }
 
+        /* Progress bars - Plus fines (4px) */
         .progress-bar {
-            height: 3px;
+            height: 4px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            margin-top: 0.5rem;
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-xs);
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 6px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
             transition: width 1s ease;
         }
 
         /* ===== TIMELINE (COMPACT) ===== */
         .timeline {
             position: relative;
-            padding-left: 24px;
+            padding-left: 20px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 10px;
+            left: 8px;
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-gradient);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.8rem;
+            margin-bottom: var(--space-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
         }
 
         .timeline-icon {
             position: absolute;
-            left: -22px;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            left: -18px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: var(--font-xs);
         }
 
         .exp-header {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
         }
 
         .exp-title {
-            font-size: 0.85rem;
-            margin-bottom: 0.2rem;
-            line-height: 1.3;
+            font-size: var(--font-md);
+            margin-bottom: 2px;
+            line-height: 1.2;
         }
 
         .exp-company {
-            color: #64b5f6;
-            font-size: 0.8rem;
-            margin-bottom: 0.2rem;
+            color: var(--accent-color);
+            font-size: var(--font-sm);
+            margin-bottom: 2px;
         }
 
         .exp-location {
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.3rem;
-            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-xs);
         }
 
         .exp-date {
             background: rgba(255, 255, 255, 0.1);
-            padding: 0.25rem 0.5rem;
-            border-radius: 8px;
-            font-size: 0.65rem;
+            padding: 2px var(--space-xs);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-xs);
             display: inline-block;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
         }
 
         .exp-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-top: 0.5rem;
+            gap: var(--space-xs);
+            margin-top: var(--space-xs);
         }
 
         .exp-tag {
-            padding: 0.2rem 0.5rem;
+            padding: 2px var(--space-xs);
             background: rgba(100, 181, 246, 0.2);
-            border-radius: 6px;
-            font-size: 0.65rem;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-xs);
         }
 
         /* ===== PROJECT SHOWCASE (COMPACT) ===== */
         .project-showcase {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem 0.8rem;
-            margin-top: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-top: var(--space-md);
             width: 100%;
         }
 
         .project-header {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
         }
 
         .project-logo {
-            font-size: 1.5rem;
-            margin-bottom: 0.4rem;
+            font-size: 1.3rem;
+            margin-bottom: var(--space-xs);
         }
 
         .project-name {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
+            font-size: var(--font-2xl);
+            margin-bottom: var(--space-xs);
             line-height: 1.2;
         }
 
         .project-subtitle {
-            color: #64b5f6;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            font-size: var(--font-sm);
+            margin-bottom: var(--space-xs);
         }
 
         .project-badges {
             display: flex;
-            gap: 0.3rem;
+            gap: var(--space-xs);
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 0.5rem;
+            margin-top: var(--space-xs);
         }
 
         .project-badge {
-            padding: 0.25rem 0.6rem;
-            border-radius: 8px;
-            font-size: 0.65rem;
+            padding: 2px var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-xs);
         }
 
         .badge-primary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
@@ -530,78 +595,90 @@
         .badge-success { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
 
         .project-vision {
-            margin: 1rem 0;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
+            margin: var(--space-sm) 0;
+            padding: var(--space-sm);
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
         }
 
         .vision-title {
-            font-size: 0.9rem;
-            margin-bottom: 0.4rem;
+            font-size: var(--font-md);
+            margin-bottom: var(--space-xs);
         }
 
         .project-vision p {
-            font-size: 0.75rem;
-            line-height: 1.5;
+            font-size: var(--font-sm);
+            line-height: 1.4;
+        }
+
+        /* Feature cards - Grille 2 colonnes sur mobile */
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xs);
         }
 
         .feature-card {
             text-align: center;
+            padding: var(--space-xs) var(--space-sm);
         }
 
         .feature-icon {
-            font-size: 1.3rem;
-            margin-bottom: 0.4rem;
+            font-size: var(--font-2xl);
+            margin-bottom: var(--space-xs);
         }
 
         .feature-title {
             font-weight: 600;
-            margin-bottom: 0.3rem;
-            font-size: 0.8rem;
+            margin-bottom: 2px;
+            font-size: var(--font-sm);
         }
 
         .feature-desc {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.4;
+            font-size: var(--font-xs);
+            color: var(--text-muted);
+            line-height: 1.3;
         }
 
         .tech-stack {
-            margin-top: 1rem;
+            margin-top: var(--space-md);
         }
 
         .tech-title {
             text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
+            font-size: var(--font-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .tech-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xs);
         }
 
         .tech-item {
-            padding: 0.6rem;
-            border-radius: 6px;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
             text-align: center;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: var(--font-xs);
         }
 
         .tech-item:nth-child(1) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
         .tech-item:nth-child(2) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
         .tech-item:nth-child(3) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
         .tech-item:nth-child(4) { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
-        .tech-item:nth-child(5) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
-        .tech-item:nth-child(6) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
-        .tech-item:nth-child(7) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .tech-item:nth-child(5) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+        .tech-item:nth-child(6) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; }
+        .tech-item:nth-child(7) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; }
         .tech-item:nth-child(8) { background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%); }
 
         .impact-stats {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
-            margin-top: 1rem;
-            padding: 0.8rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xs);
+            margin-top: var(--space-md);
+            padding: var(--space-sm);
             background: rgba(0, 255, 127, 0.05);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
         }
 
         .impact-item {
@@ -609,82 +686,83 @@
         }
 
         .impact-icon {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
+            font-size: var(--font-xl);
+            margin-bottom: 2px;
         }
 
         .impact-value {
-            font-size: 1.4rem;
+            font-size: var(--font-2xl);
             font-weight: bold;
             color: #4caf50;
         }
 
         .impact-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-size: var(--font-xs);
         }
 
         /* ===== FORMATIONS (COMPACT) ===== */
         .formation-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.4rem;
+            font-size: 1.3rem;
+            margin-bottom: var(--space-xs);
         }
 
         .formation-title {
-            font-size: 0.85rem;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
+            font-size: var(--font-md);
+            margin-bottom: 2px;
+            line-height: 1.2;
         }
 
         .formation-school {
-            color: #64b5f6;
-            margin-bottom: 0.2rem;
-            font-size: 0.75rem;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+            font-size: var(--font-sm);
         }
 
         .formation-year {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.7rem;
-            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: var(--font-xs);
+            margin-bottom: var(--space-xs);
         }
 
         .formation-card {
             text-align: center;
+            padding: var(--space-sm);
         }
 
         .competences-list {
             text-align: center;
-            margin-top: 0.5rem;
+            margin-top: var(--space-xs);
         }
 
         .competence-badge {
             display: inline-block;
-            padding: 0.2rem 0.5rem;
+            padding: 2px var(--space-xs);
             background: rgba(100, 181, 246, 0.2);
-            border-radius: 6px;
-            font-size: 0.65rem;
-            margin: 0.15rem;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-xs);
+            margin: 2px;
         }
 
         /* ===== CONTACT (COMPACT) ===== */
         .contact-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.6rem;
-            border-radius: 8px;
+            background: var(--bg-card-hover);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: var(--space-sm);
         }
 
         .contact-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: var(--font-md);
             flex-shrink: 0;
         }
 
@@ -694,30 +772,35 @@
         }
 
         .contact-card > div > div:first-child {
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 0.1rem;
+            font-size: var(--font-xs);
+            color: var(--text-muted);
+            margin-bottom: 1px;
         }
 
         .contact-card > div > div:last-child {
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: var(--font-sm);
             word-break: break-word;
+        }
+
+        .contact-info {
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xs);
         }
 
         .availability-card {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            padding: 0.8rem;
-            border-radius: 8px;
-            margin-top: 0.8rem;
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-sm);
         }
 
         .availability-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.4rem 0;
+            padding: var(--space-xs) 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.75rem;
+            font-size: var(--font-sm);
         }
 
         .availability-item:last-child {
@@ -725,35 +808,35 @@
         }
 
         .form-group {
-            margin-bottom: 0.8rem;
+            margin-bottom: var(--space-sm);
         }
 
         label {
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 2px;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: var(--font-sm);
         }
 
         input, textarea {
             width: 100%;
-            padding: 0.6rem;
+            padding: var(--space-sm);
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
             color: white;
-            font-size: 0.8rem;
+            font-size: var(--font-sm);
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #64b5f6;
+            border-color: var(--accent-color);
             background: rgba(255, 255, 255, 0.15);
         }
 
         textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 70px;
         }
 
         input::placeholder, textarea::placeholder {
@@ -763,38 +846,38 @@
         /* ===== FOOTER (COMPACT) ===== */
         footer {
             text-align: center;
-            padding: 1rem 0.75rem;
+            padding: var(--space-md);
             background: rgba(0,0,0,0.3);
-            margin-top: 1rem;
+            margin-top: var(--space-md);
         }
 
         footer > div > div:first-child {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
         }
 
         footer h3 {
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-            color: #64b5f6;
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-xs);
+            color: var(--accent-color);
         }
 
         footer h4 {
-            font-size: 0.85rem;
-            margin-bottom: 0.4rem;
+            font-size: var(--font-md);
+            margin-bottom: var(--space-xs);
         }
 
         footer p, footer span {
-            font-size: 0.7rem;
-            line-height: 1.5;
+            font-size: var(--font-xs);
+            line-height: 1.4;
         }
 
         /* ===== ANIMATIONS (MINIMAL) ===== */
         .fade-in {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(8px);
             transition: all 0.3s ease;
         }
 
@@ -805,110 +888,124 @@
 
         /* ===== RESPONSIVE: TABLET (min-width: 768px) ===== */
         @media (min-width: 768px) {
+            :root {
+                --font-xs: 0.7rem;
+                --font-sm: 0.75rem;
+                --font-base: 0.8rem;
+                --font-md: 0.85rem;
+                --font-lg: 0.95rem;
+                --font-xl: 1.1rem;
+                --font-2xl: 1.4rem;
+            }
+
             html {
                 font-size: 16px;
             }
 
             .code-logo {
-                font-size: 2rem;
-                top: 20px;
-                left: 20px;
+                font-size: 1.5rem;
+                top: var(--space-lg);
+                left: var(--space-lg);
             }
 
             .dark-mode-toggle {
-                width: 50px;
-                height: 50px;
-                top: 20px;
-                right: 20px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                top: var(--space-lg);
+                right: var(--space-lg);
+                font-size: var(--font-xl);
             }
 
             .hero-section {
-                padding: 2rem;
+                padding: var(--space-2xl) var(--space-lg);
             }
 
             .profile-image {
-                width: 180px;
-                height: 180px;
-                border: 4px solid transparent;
-                padding: 4px;
+                width: 120px;
+                height: 120px;
+                border: 3px solid transparent;
+                padding: 3px;
             }
 
             h1 {
-                font-size: 3rem;
+                font-size: 2.2rem;
             }
 
             .subtitle {
-                font-size: 1.3rem;
+                font-size: var(--font-xl);
             }
 
             .description {
-                font-size: 1rem;
+                font-size: var(--font-md);
             }
 
             .passion-box {
-                padding: 2rem;
+                padding: var(--space-md) var(--space-lg);
             }
 
             .buttons {
                 flex-direction: row;
                 justify-content: center;
-                flex-wrap: wrap;
+                gap: var(--space-md);
             }
 
             .btn {
                 width: auto;
-                padding: 1rem 2rem;
+                padding: var(--space-sm) var(--space-lg);
+                max-width: none;
+                flex: none;
             }
 
             .section {
-                padding: 4rem 2rem;
+                padding: var(--space-2xl) var(--space-lg);
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .section-subtitle {
-                font-size: 1rem;
+                font-size: var(--font-md);
             }
 
             .expertise-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
             }
 
             .expertise-areas {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+                gap: var(--space-sm);
             }
 
+            /* Skills - 2 colonnes sur tablette */
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
             }
 
             .features-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-sm);
             }
 
             .tech-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
 
             .formation-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-md);
             }
 
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem;
+                gap: var(--space-lg);
             }
 
             .contact-info {
                 grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-sm);
             }
 
             .impact-stats {
@@ -916,46 +1013,57 @@
             }
 
             .timeline {
-                padding-left: 50px;
+                padding-left: 40px;
             }
 
             .timeline::before {
-                left: 20px;
+                left: 16px;
             }
 
             .timeline-icon {
-                left: -48px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                left: -38px;
+                width: 32px;
+                height: 32px;
+                font-size: var(--font-md);
             }
         }
 
         /* ===== RESPONSIVE: DESKTOP (min-width: 1024px) ===== */
         @media (min-width: 1024px) {
+            :root {
+                --font-2xl: 1.6rem;
+            }
+
             .profile-image {
-                width: 200px;
-                height: 200px;
+                width: 140px;
+                height: 140px;
             }
 
             h1 {
-                font-size: 4rem;
+                font-size: 2.8rem;
             }
 
             .subtitle {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             .section {
-                padding: 5rem 2rem;
+                padding: var(--space-2xl) var(--space-2xl);
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
             .section-title {
-                font-size: 3rem;
+                font-size: 2.4rem;
             }
 
             .section-subtitle {
-                font-size: 1.1rem;
+                font-size: var(--font-lg);
+            }
+
+            /* Skills - 3 colonnes sur desktop */
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .features-grid {
@@ -981,6 +1089,30 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-sm);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #7b8eea 0%, #8b5ba2 100%);
+        }
+
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #667eea rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 <body>
@@ -995,7 +1127,7 @@
         <div class="hero-content">
             <div class="profile-container">
                 <div class="profile-image">
-                    <img src="/images/FezaiRayen.jpg" alt="Fezai Rayen">
+                    <img src="9bdb7549-28f4-4447-bf6c-9b5309881bf4.jpg" alt="Fezai Rayen">
                 </div>
             </div>
             
@@ -1009,7 +1141,7 @@
             </div>
             
             <div class="buttons">
-                <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo">🎥 Démo CORAZÓN</a>
+                <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo">🎥 Démo</a>
                 <a href="#projet" class="btn btn-primary">🚀 Projets</a>
                 <a href="#contact" class="btn btn-secondary">✉️ Contact</a>
             </div>
@@ -1019,7 +1151,7 @@
     <!-- Section Expertise -->
     <section class="section fade-in">
         <h2 class="section-title">🌍 Commerce International 📈</h2>
-        <div style="text-align: center; margin-bottom: 1rem;">
+        <div style="text-align: center; margin-bottom: 0.75rem;">
             <span class="badge">Expert Digitalisation Logistique</span>
         </div>
         
@@ -1032,31 +1164,29 @@
                 <p class="expertise-text">
                     Ma passion : <span style="color: #64b5f6;">transformer les défis en opportunités digitales</span> grâce aux technologies innovantes.
                 </p>
-                <div style="background: rgba(100, 181, 246, 0.1); padding: 0.6rem; border-radius: 6px; border-left: 2px solid #64b5f6;">
-                    <h4 style="color: #64b5f6; margin-bottom: 0.3rem; font-size: 0.8rem;">🎯 Objectif</h4>
-                    <p style="font-size: 0.7rem;">Révolutionner les processus commerciaux par la digitalisation et l'automatisation.</p>
+                <div style="background: rgba(100, 181, 246, 0.1); padding: 0.5rem; border-radius: 6px; border-left: 2px solid #64b5f6;">
+                    <h4 style="color: #64b5f6; margin-bottom: 0.2rem; font-size: 0.75rem;">🎯 Objectif</h4>
+                    <p style="font-size: 0.65rem;">Révolutionner les processus commerciaux par la digitalisation et l'automatisation.</p>
                 </div>
             </div>
-            
-
         </div>
         
         <div class="expertise-areas">
             <div class="area-card">
                 <div class="area-title">🌍 Commerce International</div>
-                <div class="area-desc">Import/Export & Négociation</div>
+                <div class="area-desc">Import/Export</div>
             </div>
             <div class="area-card">
                 <div class="area-title">📈 Logistique Digitale</div>
-                <div class="area-desc">Optimisation des flux</div>
+                <div class="area-desc">Optimisation</div>
             </div>
             <div class="area-card">
                 <div class="area-title">👥 Gestion Multiculturelle</div>
-                <div class="area-desc">Équipes internationales</div>
+                <div class="area-desc">Équipes intl.</div>
             </div>
             <div class="area-card">
                 <div class="area-title">🎯 Solutions Sur Mesure</div>
-                <div class="area-desc">Développement personnalisé</div>
+                <div class="area-desc">Dev custom</div>
             </div>
         </div>
     </section>
@@ -1079,12 +1209,11 @@
                     <li class="skill-item"><span class="check-icon">✓</span> Front & Back Office</li>
                     <li class="skill-item"><span class="check-icon">✓</span> Service multiculturel</li>
                     <li class="skill-item"><span class="check-icon">✓</span> Droit commercial</li>
-                    <li class="skill-item"><span class="check-icon">✓</span> Négociation</li>
                 </ul>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 95%"></div>
                 </div>
-                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">95%</div>
+                <div style="text-align: right; margin-top: 0.2rem; color: rgba(255,255,255,0.6); font-size: 0.65rem;">95%</div>
             </div>
 
             <div class="skill-category">
@@ -1103,7 +1232,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 90%"></div>
                 </div>
-                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">90%</div>
+                <div style="text-align: right; margin-top: 0.2rem; color: rgba(255,255,255,0.6); font-size: 0.65rem;">90%</div>
             </div>
 
             <div class="skill-category">
@@ -1118,12 +1247,11 @@
                     <li class="skill-item"><span class="check-icon">✓</span> UX/UI & Responsive</li>
                     <li class="skill-item"><span class="check-icon">✓</span> API REST</li>
                     <li class="skill-item"><span class="check-icon">✓</span> Architecture logicielle</li>
-                    <li class="skill-item"><span class="check-icon">✓</span> Optimisation</li>
                 </ul>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 92%"></div>
                 </div>
-                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">92%</div>
+                <div style="text-align: right; margin-top: 0.2rem; color: rgba(255,255,255,0.6); font-size: 0.65rem;">92%</div>
             </div>
 
             <div class="skill-category">
@@ -1142,7 +1270,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 88%"></div>
                 </div>
-                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">88%</div>
+                <div style="text-align: right; margin-top: 0.2rem; color: rgba(255,255,255,0.6); font-size: 0.65rem;">88%</div>
             </div>
 
             <div class="skill-category">
@@ -1161,7 +1289,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 90%"></div>
                 </div>
-                <div style="text-align: right; margin-top: 0.3rem; color: rgba(255,255,255,0.6); font-size: 0.7rem;">90%</div>
+                <div style="text-align: right; margin-top: 0.2rem; color: rgba(255,255,255,0.6); font-size: 0.65rem;">90%</div>
             </div>
         </div>
     </section>
@@ -1182,7 +1310,7 @@
                         <div class="exp-date">Mai 2024 - Juin 2025</div>
                     </div>
                 </div>
-                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Développement CORAZÓN DIGITAL pour digitalisation logistique. Gestion complète du projet avec analyse besoins, UX/UI et développement.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.7rem;">Développement CORAZÓN DIGITAL pour digitalisation logistique. Gestion complète du projet.</p>
                 <div class="exp-tags">
                     <span class="exp-tag">Commerce</span>
                     <span class="exp-tag">Logistique</span>
@@ -1201,7 +1329,7 @@
                         <div class="exp-date">2023-2024</div>
                     </div>
                 </div>
-                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Service client luxe international, gestion clientèle multilingue. Communication interculturelle.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.7rem;">Service client luxe international, gestion clientèle multilingue.</p>
                 <div class="exp-tags">
                     <span class="exp-tag">Service client</span>
                     <span class="exp-tag">Langues</span>
@@ -1219,7 +1347,7 @@
                         <div class="exp-date">2022</div>
                     </div>
                 </div>
-                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Gestion station lavage, optimisation processus, management équipe.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.7rem;">Gestion station lavage, optimisation processus, management équipe.</p>
                 <div class="exp-tags">
                     <span class="exp-tag">Management</span>
                     <span class="exp-tag">Optimisation</span>
@@ -1236,7 +1364,7 @@
                         <div class="exp-date">2019-2021</div>
                     </div>
                 </div>
-                <p style="margin: 0.5rem 0; font-size: 0.75rem;">Création objets artisanaux tunisiens pour exportation internationale.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.7rem;">Création objets artisanaux tunisiens pour exportation internationale.</p>
                 <div class="exp-tags">
                     <span class="exp-tag">Artisanat</span>
                     <span class="exp-tag">Export</span>
@@ -1260,8 +1388,8 @@
                     <span class="project-badge badge-info">🏢 SOCOTU</span>
                     <span class="project-badge badge-success">🔄 2024-25</span>
                 </div>
-                <div style="margin-top: 0.8rem;">
-                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo" style="font-size: 0.75rem; padding: 0.6rem 1rem;">
+                <div style="margin-top: 0.5rem;">
+                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo" style="font-size: 0.7rem; padding: 0.4rem 0.8rem;">
                         🎥 Voir Démo
                     </a>
                 </div>
@@ -1276,32 +1404,32 @@
                 <div class="feature-card">
                     <div class="feature-icon">❤️</div>
                     <div class="feature-title">Interface Intuitive</div>
-                    <p class="feature-desc">Design moderne optimisé</p>
+                    <p class="feature-desc">Design moderne</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <div class="feature-title">Performance</div>
-                    <p class="feature-desc">Ultra-rapide et réactif</p>
+                    <p class="feature-desc">Ultra-rapide</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
                     <div class="feature-title">Sécurité</div>
-                    <p class="feature-desc">Protection renforcée</p>
+                    <p class="feature-desc">Protection max</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
-                    <div class="feature-title">Multi-utilisateurs</div>
-                    <p class="feature-desc">Rôles et permissions</p>
+                    <div class="feature-title">Multi-users</div>
+                    <p class="feature-desc">Rôles & perms</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <div class="feature-title">Analytics</div>
-                    <p class="feature-desc">Rapports temps réel</p>
+                    <p class="feature-desc">Temps réel</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌐</div>
-                    <div class="feature-title">Intégration API</div>
-                    <p class="feature-desc">Services externes</p>
+                    <div class="feature-title">API</div>
+                    <p class="feature-desc">Intégrations</p>
                 </div>
             </div>
 
@@ -1328,7 +1456,7 @@
                 <div class="impact-item">
                     <div class="impact-icon">👥</div>
                     <div class="impact-value">50+</div>
-                    <div class="impact-label">Utilisateurs actifs</div>
+                    <div class="impact-label">Utilisateurs</div>
                 </div>
                 <div class="impact-item">
                     <div class="impact-icon">🛡️</div>
@@ -1337,14 +1465,14 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 1rem; padding: 0.8rem; background: rgba(100, 181, 246, 0.1); border-radius: 8px;">
-                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Intéressé ?</h4>
-                <p style="margin-bottom: 0.8rem; color: rgba(255,255,255,0.8); font-size: 0.75rem;">Créons des solutions similaires</p>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo">
+            <div style="text-align: center; margin-top: 0.75rem; padding: 0.5rem; background: rgba(100, 181, 246, 0.1); border-radius: 8px;">
+                <h4 style="font-size: 0.8rem; margin-bottom: 0.3rem;">Intéressé ?</h4>
+                <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.8); font-size: 0.7rem;">Créons des solutions similaires</p>
+                <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-demo" style="flex: 1; max-width: 100px;">
                         🎥 Démo
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
+                    <a href="#contact" class="btn btn-secondary" style="flex: 1; max-width: 100px;">
                         💬 Discuter
                     </a>
                 </div>
@@ -1363,13 +1491,12 @@
                 <h3 class="formation-title">Licence TCI</h3>
                 <p class="formation-school">ISET Radès</p>
                 <p class="formation-year">2022 - 2025</p>
-                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Formation commerce international, logistique, incoterms, douanes et digitalisation.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.65rem; line-height: 1.3;">Formation commerce international, logistique, incoterms, douanes.</p>
                 <div class="competences-list">
                     <span class="competence-badge">Commerce</span>
                     <span class="competence-badge">Logistique</span>
                     <span class="competence-badge">Incoterms</span>
                     <span class="competence-badge">Douanes</span>
-                    <span class="competence-badge">Import/Export</span>
                 </div>
             </div>
 
@@ -1378,7 +1505,7 @@
                 <h3 class="formation-title">Anglais B2</h3>
                 <p class="formation-school">Institut Bourguiba</p>
                 <p class="formation-year">2023</p>
-                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Anglais professionnel pour échanges commerciaux et négociation.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.65rem; line-height: 1.3;">Anglais professionnel pour échanges commerciaux.</p>
                 <div class="competences-list">
                     <span class="competence-badge">Anglais commercial</span>
                     <span class="competence-badge">Communication</span>
@@ -1391,14 +1518,13 @@
                 <h3 class="formation-title">Dev Web Full Stack</h3>
                 <p class="formation-school">Udemy</p>
                 <p class="formation-year">2023 - 2024</p>
-                <p style="margin: 0.5rem 0; font-size: 0.7rem; line-height: 1.4;">Formation développement web moderne appliqué au commerce international.</p>
+                <p style="margin: 0.3rem 0; font-size: 0.65rem; line-height: 1.3;">Développement web moderne appliqué au commerce.</p>
                 <div class="competences-list">
                     <span class="competence-badge">HTML5</span>
                     <span class="competence-badge">CSS3</span>
                     <span class="competence-badge">JavaScript</span>
                     <span class="competence-badge">PHP</span>
                     <span class="competence-badge">MySQL</span>
-                    <span class="competence-badge">UX/UI</span>
                 </div>
             </div>
         </div>
@@ -1411,7 +1537,7 @@
         
         <div class="contact-grid">
             <div>
-                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">Informations</h3>
+                <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Informations</h3>
                 <div class="contact-info">
                     <div class="contact-card">
                         <div class="contact-icon">📞</div>
@@ -1431,7 +1557,7 @@
                         <div class="contact-icon">✉️</div>
                         <div>
                             <div>Email</div>
-                            <div><a href="https://mail.google.com/mail/u/0/#inbox" style="color: inherit; text-decoration: none;"><span class="__cf_email__" data-cfemail="f9bf9c839890d78b98809c97b99e94989095d79a9694">fezaii.rayen</span></a></div>
+                            <div><a href="/cdn-cgi/l/email-protection#81e7e4fbe0e8e8aff3e0f8e4efc1e6ece0e8edafe2eeec" style="color: inherit; text-decoration: none;">fezaii.rayen</a></div>
                         </div>
                     </div>
                     <div class="contact-card">
@@ -1458,7 +1584,7 @@
                 </div>
 
                 <div class="availability-card">
-                    <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">📅 Disponibilité</h4>
+                    <h4 style="font-size: 0.8rem; margin-bottom: 0.3rem;">📅 Disponibilité</h4>
                     <div class="availability-item">
                         <span>Réponse</span>
                         <strong>&lt; 24h</strong>
@@ -1479,7 +1605,7 @@
             </div>
 
             <div class="contact-form">
-                <h3 style="font-size: 1rem; margin-bottom: 0.8rem;">✉️ Message</h3>
+                <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem;">✉️ Message</h3>
                 <form action="mailto:Fezai.rayen@gmail.com" method="post" enctype="text/plain">
                     <div class="form-group">
                         <label>Nom *</label>
@@ -1504,13 +1630,13 @@
                     <button type="submit" class="btn btn-primary" style="width: 100%;">✉️ Envoyer</button>
                 </form>
                 
-                <div style="margin-top: 0.8rem; text-align: center;">
-                    <p style="color: rgba(255,255,255,0.6); font-size: 0.7rem; margin-bottom: 0.5rem;">Ou directement :</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="https://wa.me/21652374459" target="_blank" class="btn btn-secondary">
+                <div style="margin-top: 0.5rem; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.65rem; margin-bottom: 0.3rem;">Ou directement :</p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="https://wa.me/21652374459" target="_blank" class="btn btn-secondary" style="flex: 1;">
                             💬 WhatsApp
                         </a>
-                        <a href="/cdn-cgi/l/email-protection#f0b6958a9199de829189959eb0979d91999cde939f9d" class="btn btn-secondary">
+                        <a href="/cdn-cgi/l/email-protection#c88eadb2a9a1e6baa9b1ada688afa5a9a1a4e6aba7a5" class="btn btn-secondary" style="flex: 1;">
                             ✉️ Email
                         </a>
                     </div>
@@ -1525,25 +1651,28 @@
             <div>
                 <div style="text-align: center;">
                     <h3>Fezai Rayen</h3>
-                    <p style="color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 0.8rem;">
-                        Spécialiste Commerce International & Expert Digitalisation Logistique. Solutions innovantes pour optimiser les échanges mondiaux.
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.4; margin-bottom: 0.5rem;">
+                        Spécialiste Commerce International & Expert Digitalisation Logistique.
                     </p>
                 </div>
                 <div style="text-align: center;">
                     <h4>Domaines</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.3rem; align-items: center;">
-                        <span style="color: rgba(255,255,255,0.6);">• Commerce International</span>
-                        <span style="color: rgba(255,255,255,0.6);">• Logistique Digitale</span>
-                        <span style="color: rgba(255,255,255,0.6);">• Développement Web</span>
-                        <span style="color: rgba(255,255,255,0.6);">• AI Automation</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: center;">
+                        <span style="color: rgba(255,255,255,0.6); font-size: 0.65rem;">Commerce International</span>
+                        <span style="color: rgba(255,255,255,0.4);">•</span>
+                        <span style="color: rgba(255,255,255,0.6); font-size: 0.65rem;">Logistique Digitale</span>
+                        <span style="color: rgba(255,255,255,0.4);">•</span>
+                        <span style="color: rgba(255,255,255,0.6); font-size: 0.65rem;">Dev Web</span>
+                        <span style="color: rgba(255,255,255,0.4);">•</span>
+                        <span style="color: rgba(255,255,255,0.6); font-size: 0.65rem;">AI Automation</span>
                     </div>
                 </div>
             </div>
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.8rem; margin-top: 1rem; text-align: center;">
-                <p style="color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">&copy; 2025 Fezai Rayen. Tous droits réservés.</p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; margin-top: 0.75rem; text-align: center;">
+                <p style="color: rgba(255,255,255,0.5); margin-bottom: 0.3rem;">&copy; 2025 Fezai Rayen. Tous droits réservés.</p>
                 <div style="display: flex; align-items: center; justify-content: center; gap: 0.3rem; color: rgba(255,255,255,0.5);">
                     <span>🌍</span>
-                    <span>Expert solutions digitales</span>
+                    <span style="font-size: 0.65rem;">Expert solutions digitales</span>
                 </div>
             </div>
         </div>
