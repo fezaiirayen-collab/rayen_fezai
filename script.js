@@ -767,7 +767,7 @@ ouiBtn.addEventListener('click', (e) => {
     isCelebrating = true;
 
     const title = document.getElementById('mainTitle');
-    title.textContent = 'Merciiii ❤️ Tu es la meilleure !';
+    title.textContent = 'aaycheeeekkk ❤️ ye a7la wazyen habhouba fe denya !';
     title.classList.add('happy');
 
     nonBtn.style.display = 'none';
