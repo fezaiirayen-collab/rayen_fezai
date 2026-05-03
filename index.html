@@ -1,2507 +1,1375 @@
- content="Fezai Rayen — Commerce International & Distribution">
-    <meta property="og:description" content="Spécialiste en commerce international, optimisation logistique et data analytics.">
-    <meta property="og:type" content="website">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-
-    <style>
-        /* ============================================================
-           CSS VARIABLES — CORPORATE BUSINESS PALETTE
-        ============================================================ */
-        :root {
-            /* Colors */
-            --bg-main:        #0d1b2e;
-            --bg-section:     #0f2040;
-            --bg-card:        rgba(255,255,255,0.04);
-            --bg-card-hover:  rgba(255,255,255,0.07);
-            --border:         rgba(255,255,255,0.08);
-            --border-gold:    rgba(201,168,76,0.5);
-
-            --blue-primary:   #1a56db;
-            --blue-dark:      #1e3a5f;
-            --blue-light:     #3b82f6;
-            --gold:           #c9a84c;
-            --gold-light:     #d4af37;
-            --gold-glow:      rgba(201,168,76,0.15);
-
-            --text-primary:   #ffffff;
-            --text-secondary: #94a3b8;
-            --text-muted:     #64748b;
-            --text-gold:      #c9a84c;
-
-            /* Gradients */
-            --grad-blue:      linear-gradient(135deg, #1a56db 0%, #1e3a5f 100%);
-            --grad-gold:      linear-gradient(135deg, #c9a84c 0%, #d4af37 100%);
-            --grad-hero:      linear-gradient(160deg, #0d1b2e 0%, #0f2040 50%, #0d1b2e 100%);
-
-            /* ============================================================
-               TYPOGRAPHY SCALE — Mobile First (réduit de 15-20%)
-               Hiérarchie claire et compacte
-            ============================================================ */
-            --font-xs:   0.65rem;   /* 10.4px — petits labels, badges */
-            --font-sm:   0.72rem;   /* 11.5px — textes secondaires, tags */
-            --font-base: 0.82rem;   /* 13.1px — texte courant */
-            --font-md:   0.9rem;    /* 14.4px — texte normal accentué */
-            --font-lg:   1rem;      /* 16px   — sous-titres, titres cartes */
-            --font-xl:   1.15rem;   /* 18.4px — titres sections moyens */
-
-            /* Spacing — réduit de ~20% pour mobile */
-            --sp-xs:  0.2rem;
-            --sp-sm:  0.4rem;
-            --sp-md:  0.6rem;
-            --sp-lg:  0.85rem;
-            --sp-xl:  1.2rem;
-            --sp-2xl: 1.6rem;
-            --sp-3xl: 2.2rem;
-            --sp-4xl: 3rem;
-
-            /* Radius */
-            --r-sm: 6px;
-            --r-md: 10px;
-            --r-lg: 16px;
-            --r-xl: 24px;
-
-            /* Fonts */
-            --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-heading: 'Montserrat', 'Inter', sans-serif;
-        }
-
-        /* ============================================================
-           RESET & BASE
-        ============================================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            /* Base réduite à 15px pour mobile (au lieu de 16px) */
-            font-size: 15px;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--bg-main);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.55;
-            font-size: var(--font-base);
-        }
-
-        /* ============================================================
-           SCROLLBAR
-        ============================================================ */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
-        ::-webkit-scrollbar-thumb { background: var(--grad-blue); border-radius: 3px; }
-        * { scrollbar-width: thin; scrollbar-color: #1a56db rgba(255,255,255,0.03); }
-
-        /* ============================================================
-           NAVBAR
-        ============================================================ */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13,27,46,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 var(--sp-xl);
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(13,27,46,0.98);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-        }
-
-        .nav-logo {
-            font-family: var(--font-heading);
-            font-size: var(--font-lg);
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: var(--sp-sm);
-            text-decoration: none;
-        }
-
-        .nav-logo-badge {
-            width: 30px;
-            height: 30px;
-            background: var(--grad-blue);
-            border-radius: var(--r-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--font-xs);
-            font-weight: 900;
-            color: white;
-            border: 1px solid var(--border-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: var(--sp-xl);
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: var(--font-sm);
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            transition: color 0.2s ease;
-            position: relative;
-            padding-bottom: 2px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: var(--sp-sm);
-        }
-
-        .dark-mode-toggle {
-            width: 30px;
-            height: 30px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: var(--font-sm);
-            transition: all 0.2s ease;
-            color: var(--text-secondary);
-        }
-
-        .dark-mode-toggle:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-gold);
-            color: var(--gold);
-        }
-
-        /* Mobile nav toggle */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-hamburger span {
-            width: 20px;
-            height: 2px;
-            background: var(--text-secondary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* ============================================================
-           HERO SECTION
-        ============================================================ */
-        .hero-section {
-            min-height: 100vh;
-            background: var(--grad-hero);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px var(--sp-xl) var(--sp-3xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Subtle background grid */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(26,86,219,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(26,86,219,0.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
-
-        /* Glow orbs */
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(26,86,219,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-glow-right {
-            position: absolute;
-            bottom: 10%;
-            right: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 760px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Profile image */
-        .profile-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: var(--sp-lg);
-        }
-
-        .profile-ring {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            padding: 3px;
-            background: var(--grad-gold);
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .profile-ring::before {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            border: 1px solid rgba(201,168,76,0.2);
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            background: var(--bg-section);
-        }
-
-        /* Status badge */
-        .status-badge {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            background: #22c55e;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 2px solid var(--bg-main);
-        }
-
-        /* Hero text */
-        .hero-eyebrow {
-            display: inline-block;
-            background: var(--gold-glow);
-            border: 1px solid var(--border-gold);
-            color: var(--gold);
-            font-size: var(--font-xs);
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: var(--sp-xs) var(--sp-md);
-            border-radius: 100px;
-            margin-bottom: var(--sp-md);
-        }
-
-        /* H1 — titre principal : dominant mais compact */
-        .hero-name {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 5vw, 3.2rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: var(--sp-sm);
-            color: var(--text-primary);
-        }
-
-        .hero-name span {
-            background: var(--grad-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(0.78rem, 1.8vw, var(--font-md));
-            color: var(--text-secondary);
-            margin-bottom: var(--sp-xs);
-            line-height: 1.5;
-            font-weight: 400;
-        }
-
-        .hero-tagline {
-            font-size: clamp(0.72rem, 1.5vw, var(--font-base));
-            color: var(--blue-light);
-            margin-bottom: var(--sp-lg);
-            font-style: italic;
-        }
-
-        /* Mission box */
-        .mission-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--gold);
-            border-radius: var(--r-md);
-            padding: var(--sp-md) var(--sp-lg);
-            margin: var(--sp-lg) auto;
-            max-width: 580px;
-            text-align: left;
-        }
-
-        .mission-label {
-            font-size: var(--font-xs);
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: var(--sp-xs);
-        }
-
-        .mission-text {
-            font-size: var(--font-base);
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        /* Hero buttons */
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--sp-sm);
-            justify-content: center;
-            margin-top: var(--sp-lg);
-        }
-
-        /* ============================================================
-           BUTTONS
-        ============================================================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--sp-xs);
-            padding: 0.5rem 1.1rem;
-            border-radius: var(--r-sm);
-            font-size: var(--font-sm);
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .btn-primary {
-            background: var(--blue-primary);
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(26,86,219,0.3);
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(26,86,219,0.4);
-        }
-
-        .btn-gold {
-            background: var(--grad-gold);
-            color: #0d1b2e;
-            font-weight: 700;
-            box-shadow: 0 4px 16px rgba(201,168,76,0.25);
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(201,168,76,0.35);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--border-gold);
-            color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        /* ============================================================
-           SECTIONS
-        ============================================================ */
-        .section {
-            padding: var(--sp-3xl) var(--sp-xl);
-            width: 100%;
-            position: relative;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--sp-2xl);
-        }
-
-        .section-eyebrow {
-            display: inline-block;
-            font-size: var(--font-xs);
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: var(--sp-xs);
-        }
-
-        /* H2 — titres sections : équilibrés */
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: clamp(1.3rem, 3.5vw, 2rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1.2;
-            margin-bottom: var(--sp-xs);
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Gold underline decoration */
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background: var(--grad-gold);
-            border-radius: 2px;
-            margin: var(--sp-xs) auto 0;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: var(--font-base);
-            margin-top: var(--sp-sm);
-            line-height: 1.55;
-        }
-
-        /* Alternating section backgrounds */
-        .section-alt {
-            background: linear-gradient(180deg, rgba(15,32,64,0.4) 0%, rgba(13,27,46,0) 100%);
-        }
-
-        /* ============================================================
-           FADE-IN ANIMATION
-        ============================================================ */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================================
-           EXPERTISE SECTION
-        ============================================================ */
-        .expertise-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--sp-xl);
-            margin-bottom: var(--sp-lg);
-            transition: border-color 0.3s ease;
-        }
-
-        .expertise-card:hover {
-            border-color: var(--border-gold);
-        }
-
-        /* H3 — sous-titres : compacts */
-        .expertise-header {
-            font-family: var(--font-heading);
-            font-size: var(--font-lg);
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: var(--sp-sm);
-        }
-
-        .expertise-text {
-            color: var(--text-secondary);
-            font-size: var(--font-base);
-            line-height: 1.65;
-            margin-bottom: var(--sp-sm);
-        }
-
-        .objective-box {
-            background: rgba(26,86,219,0.08);
-            border-left: 3px solid var(--blue-primary);
-            border-radius: 0 var(--r-sm) var(--r-sm) 0;
-            padding: var(--sp-sm) var(--sp-md);
-        }
-
-        .objective-box h4 {
-            color: var(--blue-light);
-            font-size: var(--font-xs);
-            font-weight: 700;
-            margin-bottom: var(--sp-xs);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .objective-box p {
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-        }
-
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--sp-sm);
-        }
-
-        .area-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            padding: var(--sp-sm) var(--sp-md);
-            transition: all 0.3s ease;
-        }
-
-        .area-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-gold);
-            transform: translateY(-2px);
-        }
-
-        .area-icon {
-            font-size: 1.1rem;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .area-title {
-            font-weight: 600;
-            font-size: var(--font-sm);
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-
-        .area-desc {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-        }
-
-        /* ============================================================
-           SKILLS SECTION
-        ============================================================ */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--sp-md);
-        }
-
-        .skill-category {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--sp-lg);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--grad-blue);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-category:hover {
-            border-color: var(--border-gold);
-            background: var(--bg-card-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }
-
-        .skill-category:hover::before {
-            opacity: 1;
-        }
-
-        /* Priority skill (Commerce) */
-        .skill-category.priority {
-            border-color: rgba(201,168,76,0.2);
-        }
-
-        .skill-category.priority::before {
-            background: var(--grad-gold);
-            opacity: 1;
-        }
-
-        /* Tech skill (less dominant) */
-        .skill-category.tech-secondary {
-            opacity: 0.85;
-        }
-
-        .skill-category.tech-secondary .skill-title {
-            font-size: var(--font-base);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: var(--sp-sm);
-            margin-bottom: var(--sp-sm);
-        }
-
-        .skill-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--grad-blue);
-            border-radius: var(--r-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--font-md);
-            flex-shrink: 0;
-        }
-
-        .skill-icon.gold {
-            background: var(--grad-gold);
-        }
-
-        .skill-title-group {
-            flex: 1;
-        }
-
-        .skill-title {
-            font-family: var(--font-heading);
-            font-size: var(--font-md);
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
-        }
-
-        .skill-subtitle {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            margin-top: 1px;
-        }
-
-        .skill-percent {
-            font-family: var(--font-heading);
-            font-size: var(--font-lg);
-            font-weight: 800;
-            color: var(--gold);
-        }
-
-        .skill-list {
-            list-style: none;
-            margin-bottom: var(--sp-sm);
-        }
-
-        .skill-item {
-            padding: 0.3rem 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: var(--sp-sm);
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-            line-height: 1.3;
-        }
-
-        .skill-item:last-child {
-            border-bottom: none;
-        }
-
-        .check-icon {
-            color: var(--gold);
-            font-size: var(--font-xs);
-            flex-shrink: 0;
-            font-weight: 700;
-        }
-
-        .progress-bar {
-            height: 3px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--grad-blue);
-            border-radius: 2px;
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .progress-fill.gold {
-            background: var(--grad-gold);
-        }
-
-        .progress-label {
-            text-align: right;
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            margin-top: 3px;
-        }
-
-        /* ============================================================
-           TIMELINE / EXPERIENCES
-        ============================================================ */
-        .timeline {
-            position: relative;
-            padding-left: 42px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 17px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--blue-primary) 0%, var(--blue-dark) 100%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: var(--sp-lg);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--sp-lg);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            border-color: var(--border-gold);
-            background: var(--bg-card-hover);
-            transform: translateX(4px);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -34px;
-            top: 16px;
-            width: 28px;
-            height: 28px;
-            background: var(--grad-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--font-sm);
-            border: 2px solid var(--bg-main);
-        }
-
-        .exp-date-badge {
-            display: inline-block;
-            background: rgba(26,86,219,0.15);
-            border: 1px solid rgba(26,86,219,0.3);
-            color: var(--blue-light);
-            font-size: var(--font-xs);
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 100px;
-            margin-bottom: var(--sp-xs);
-        }
-
-        /* H3 expériences */
-        .exp-title {
-            font-family: var(--font-heading);
-            font-size: var(--font-md);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-
-        .exp-company {
-            color: var(--gold);
-            font-size: var(--font-sm);
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .exp-location {
-            color: var(--text-muted);
-            font-size: var(--font-xs);
-            margin-bottom: var(--sp-xs);
-        }
-
-        .exp-desc {
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-            line-height: 1.55;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .exp-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--sp-xs);
-        }
-
-        .exp-tag {
-            padding: 2px 8px;
-            background: rgba(26,86,219,0.12);
-            border: 1px solid rgba(26,86,219,0.25);
-            border-radius: 100px;
-            font-size: var(--font-xs);
-            color: var(--blue-light);
-            font-weight: 500;
-        }
-
-        /* ============================================================
-           PROJECT SECTION
-        ============================================================ */
-        .project-showcase {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-xl);
-            padding: var(--sp-xl);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-showcase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--grad-gold);
-        }
-
-        .project-header {
-            text-align: center;
-            margin-bottom: var(--sp-xl);
-            padding-bottom: var(--sp-lg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .project-logo-icon {
-            font-size: 2rem;
-            margin-bottom: var(--sp-xs);
-        }
-
-        /* H3 projet */
-        .project-name {
-            font-family: var(--font-heading);
-            font-size: clamp(1.3rem, 3.5vw, 1.9rem);
-            font-weight: 900;
-            background: var(--grad-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .project-tagline {
-            color: var(--text-secondary);
-            font-size: var(--font-base);
-            margin-bottom: var(--sp-sm);
-        }
-
-        .project-badges {
-            display: flex;
-            gap: var(--sp-xs);
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: var(--sp-md);
-        }
-
-        .project-badge {
-            padding: 3px 10px;
-            border-radius: 100px;
-            font-size: var(--font-xs);
-            font-weight: 600;
-        }
-
-        .badge-blue { background: rgba(26,86,219,0.2); border: 1px solid rgba(26,86,219,0.4); color: var(--blue-light); }
-        .badge-gold { background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold); }
-        .badge-green { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; }
-
-        /* Vision box */
-        .project-vision {
-            background: rgba(26,86,219,0.06);
-            border: 1px solid rgba(26,86,219,0.15);
-            border-left: 3px solid var(--blue-primary);
-            border-radius: 0 var(--r-md) var(--r-md) 0;
-            padding: var(--sp-md) var(--sp-lg);
-            margin-bottom: var(--sp-lg);
-        }
-
-        .vision-label {
-            font-size: var(--font-xs);
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--blue-light);
-            margin-bottom: var(--sp-xs);
-        }
-
-        .vision-text {
-            font-size: var(--font-base);
-            color: var(--text-secondary);
-            line-height: 1.65;
-        }
-
-        /* Features grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--sp-sm);
-            margin-bottom: var(--sp-lg);
-        }
-
-        .feature-card {
-            background: var(--bg-card-hover);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            padding: var(--sp-md);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-2px);
-        }
-
-        .feature-icon {
-            font-size: 1.2rem;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .feature-title {
-            font-weight: 700;
-            font-size: var(--font-sm);
-            color: var(--text-primary);
-            margin-bottom: 3px;
-        }
-
-        .feature-result {
-            font-size: var(--font-xs);
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .feature-desc {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* Tech stack */
-        .tech-stack {
-            margin-bottom: var(--sp-lg);
-        }
-
-        .tech-label {
-            font-size: var(--font-xs);
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: var(--sp-sm);
-            text-align: center;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--sp-xs);
-        }
-
-        .tech-item {
-            padding: var(--sp-xs) var(--sp-sm);
-            border-radius: var(--r-sm);
-            text-align: center;
-            font-weight: 700;
-            font-size: var(--font-xs);
-            color: white;
-        }
-
-        .tech-item:nth-child(1) { background: linear-gradient(135deg, #1a56db, #1e3a5f); }
-        .tech-item:nth-child(2) { background: linear-gradient(135deg, #16a34a, #14532d); }
-        .tech-item:nth-child(3) { background: linear-gradient(135deg, #0369a1, #0c4a6e); }
-        .tech-item:nth-child(4) { background: linear-gradient(135deg, #1d4ed8, #1e3a5f); }
-        .tech-item:nth-child(5) { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
-        .tech-item:nth-child(6) { background: linear-gradient(135deg, #0891b2, #164e63); }
-        .tech-item:nth-child(7) { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
-        .tech-item:nth-child(8) { background: linear-gradient(135deg, #c9a84c, #92400e); }
-
-        /* Impact stats */
-        .impact-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--sp-sm);
-            background: rgba(201,168,76,0.04);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--r-lg);
-            padding: var(--sp-lg);
-        }
-
-        .impact-item {
-            text-align: center;
-        }
-
-        .impact-icon {
-            font-size: 1.2rem;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .impact-value {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 3px;
-        }
-
-        .impact-label {
-            font-size: var(--font-xs);
-            color: var(--text-secondary);
-            line-height: 1.3;
-        }
-
-        /* CTA box */
-        .project-cta {
-            text-align: center;
-            margin-top: var(--sp-lg);
-            padding: var(--sp-lg);
-            background: rgba(26,86,219,0.06);
-            border: 1px solid rgba(26,86,219,0.15);
-            border-radius: var(--r-lg);
-        }
-
-        .project-cta h4 {
-            font-family: var(--font-heading);
-            font-size: var(--font-md);
-            font-weight: 700;
-            margin-bottom: var(--sp-xs);
-        }
-
-        .project-cta p {
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-            margin-bottom: var(--sp-md);
-        }
-
-        .project-cta-buttons {
-            display: flex;
-            gap: var(--sp-sm);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ============================================================
-           FORMATIONS
-        ============================================================ */
-        .formation-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--sp-md);
-        }
-
-        .formation-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--sp-lg);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .formation-card:hover {
-            border-color: var(--border-gold);
-            background: var(--bg-card-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }
-
-        .formation-icon {
-            font-size: 1.6rem;
-            margin-bottom: var(--sp-sm);
-        }
-
-        /* H3 formations */
-        .formation-title {
-            font-family: var(--font-heading);
-            font-size: var(--font-md);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 3px;
-        }
-
-        .formation-school {
-            color: var(--gold);
-            font-size: var(--font-sm);
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .formation-year {
-            color: var(--text-muted);
-            font-size: var(--font-xs);
-            margin-bottom: var(--sp-sm);
-        }
-
-        .formation-desc {
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: var(--sp-sm);
-        }
-
-        .competences-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--sp-xs);
-            justify-content: center;
-        }
-
-        .competence-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            background: rgba(26,86,219,0.12);
-            border: 1px solid rgba(26,86,219,0.25);
-            border-radius: 100px;
-            font-size: var(--font-xs);
-            color: var(--blue-light);
-            font-weight: 500;
-        }
-
-        /* ============================================================
-           CONTACT
-        ============================================================ */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--sp-lg);
-        }
-
-        .contact-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--sp-xs);
-            margin-bottom: var(--sp-md);
-        }
-
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            padding: var(--sp-sm) var(--sp-md);
-            display: flex;
-            align-items: center;
-            gap: var(--sp-sm);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            border-color: var(--border-gold);
-            background: var(--bg-card-hover);
-        }
-
-        .contact-icon {
-            width: 30px;
-            height: 30px;
-            background: var(--grad-blue);
-            border-radius: var(--r-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--font-sm);
-            flex-shrink: 0;
-        }
-
-        .contact-label {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            margin-bottom: 1px;
-        }
-
-        .contact-value {
-            font-size: var(--font-sm);
-            font-weight: 600;
-            color: var(--text-primary);
-            word-break: break-word;
-        }
-
-        .contact-value a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .contact-value a:hover {
-            color: var(--gold);
-        }
-
-        .availability-card {
-            background: var(--grad-blue);
-            border-radius: var(--r-lg);
-            padding: var(--sp-lg);
-        }
-
-        .availability-title {
-            font-family: var(--font-heading);
-            font-size: var(--font-base);
-            font-weight: 700;
-            margin-bottom: var(--sp-sm);
-            color: white;
-        }
-
-        .availability-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--sp-xs) 0;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            font-size: var(--font-sm);
-        }
-
-        .availability-item:last-child {
-            border-bottom: none;
-        }
-
-        .availability-item strong {
-            color: var(--gold-light);
-        }
-
-        /* Contact form */
-        .contact-form {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--sp-xl);
-        }
-
-        .form-title {
-            font-family: var(--font-heading);
-            font-size: var(--font-lg);
-            font-weight: 700;
-            margin-bottom: var(--sp-lg);
-            color: var(--text-primary);
-        }
-
-        .form-group {
-            margin-bottom: var(--sp-md);
-        }
-
-        label {
-            display: block;
-            margin-bottom: var(--sp-xs);
-            font-size: var(--font-xs);
-            font-weight: 600;
-            color: var(--text-secondary);
-            letter-spacing: 0.03em;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.5rem var(--sp-md);
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            color: var(--text-primary);
-            font-size: var(--font-sm);
-            font-family: var(--font-body);
-            transition: all 0.2s ease;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--blue-primary);
-            background: rgba(26,86,219,0.06);
-            box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-direct {
-            margin-top: var(--sp-md);
-            text-align: center;
-        }
-
-        .form-direct p {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            margin-bottom: var(--sp-xs);
-        }
-
-        .form-direct-buttons {
-            display: flex;
-            gap: var(--sp-xs);
-        }
-
-        /* ============================================================
-           FOOTER
-        ============================================================ */
-        footer {
-            background: rgba(0,0,0,0.4);
-            border-top: 1px solid var(--border);
-            padding: var(--sp-2xl) var(--sp-xl) var(--sp-lg);
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--sp-lg);
-            margin-bottom: var(--sp-lg);
-            padding-bottom: var(--sp-lg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .footer-brand h3 {
-            font-family: var(--font-heading);
-            font-size: var(--font-lg);
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: var(--sp-xs);
-        }
-
-        .footer-brand p {
-            font-size: var(--font-sm);
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        .footer-domains h4 {
-            font-size: var(--font-xs);
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: var(--sp-sm);
-        }
-
-        .footer-domain-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--sp-xs);
-        }
-
-        .footer-domain-item {
-            padding: 3px 10px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: var(--font-xs);
-            color: var(--text-secondary);
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--sp-xs);
-            text-align: center;
-        }
-
-        .footer-copyright {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-        }
-
-        .footer-tagline {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: var(--sp-xs);
-        }
-
-        /* ============================================================
-           RESPONSIVE — TABLET (≥ 640px)
-        ============================================================ */
-        @media (min-width: 640px) {
-            .areas-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .formation-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* ============================================================
-           RESPONSIVE — TABLET (≥ 768px)
-        ============================================================ */
-        @media (min-width: 768px) {
-            html { font-size: 15.5px; }
-
-            .nav-hamburger { display: none; }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        /* ============================================================
-           RESPONSIVE — DESKTOP (≥ 1024px)
-        ============================================================ */
-        @media (min-width: 1024px) {
-            html { font-size: 16px; }
-
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .hero-section {
-                padding-top: 110px;
-            }
-
-            .section {
-                padding: var(--sp-4xl) var(--sp-xl);
-            }
-        }
-
-        /* ============================================================
-           MOBILE NAV (< 768px)
-        ============================================================ */
-        @media (max-width: 767px) {
-            /* Réduction supplémentaire pour très petits écrans */
-            :root {
-                --font-xs:   0.62rem;
-                --font-sm:   0.7rem;
-                --font-base: 0.78rem;
-                --font-md:   0.86rem;
-                --font-lg:   0.95rem;
-                --font-xl:   1.05rem;
-
-                --sp-xs:  0.18rem;
-                --sp-sm:  0.35rem;
-                --sp-md:  0.55rem;
-                --sp-lg:  0.75rem;
-                --sp-xl:  1rem;
-                --sp-2xl: 1.4rem;
-                --sp-3xl: 1.8rem;
-                --sp-4xl: 2.4rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 52px;
-                left: 0;
-                right: 0;
-                background: rgba(13,27,46,0.98);
-                border-bottom: 1px solid var(--border);
-                flex-direction: column;
-                gap: 0;
-                padding: var(--sp-sm) 0;
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: var(--sp-sm) var(--sp-xl);
-                font-size: var(--font-base);
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-
-            .profile-ring {
-                width: 95px;
-                height: 95px;
-            }
-
-            .hero-section {
-                padding-top: 70px;
-                padding-bottom: var(--sp-2xl);
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .impact-stats {
-                grid-template-columns: repeat(3, 1fr);
-                padding: var(--sp-md);
-            }
-
-            .impact-value {
-                font-size: 1.2rem;
-            }
-
-            .contact-info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: clamp(1.1rem, 5vw, 1.5rem);
-            }
-
-            .hero-name {
-                font-size: clamp(1.6rem, 8vw, 2.4rem);
-            }
-        }
-
-        /* ============================================================
-           ACCESSIBILITY
-        ============================================================ */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>À LA VILLA — Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f9f4e8;
+      --cream-deep: #f0e8d5;
+      --brown: #4a3219;
+      --brown-soft: #6b4f38;
+      --brown-light: #8b6f52;
+      --price-color: #c8622a;
+      --white: #fffefc;
+      --footer-bar: #4a3219;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font-sans);
+      font-weight: 450;
+      color: var(--brown);
+      background: var(--cream);
+      line-height: 1.45;
+    }
+
+    .hidden { display: none !important; }
+
+    #app {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      position: relative;
+      background: var(--cream);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      display: grid;
+      grid-template-columns: 52px 1fr 52px;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px 10px;
+    }
+
+    .logo {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--brown);
+      font-style: italic;
+    }
+
+    .header__icon-btn {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Bag icon CSS */
+    .icon-bag {
+      display: block;
+      width: 27px;
+      height: 27px;
+      position: relative;
+    }
+    .icon-bag::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid currentColor;
+      border-radius: 5px 5px 9px 9px;
+    }
+    .icon-bag::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 13px;
+      height: 10px;
+      border: 2px solid currentColor;
+      border-bottom: none;
+      border-radius: 7px 7px 0 0;
+    }
+
+    /* Pencil mark on bag */
+    .icon-bag-pencil {
+      position: absolute;
+      top: 6px;
+      right: 5px;
+      width: 9px;
+      height: 9px;
+    }
+    .icon-bag-pencil::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 7px; height: 7px;
+      border: 1.5px solid currentColor;
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+
+    .badge {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 0.62rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+    }
+
+    .header__menu-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: var(--brown);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+      justify-self: end;
+    }
+    .header__menu-btn span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 1px;
+    }
+
+    .icon-arrow-back {
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 0 auto;
+      border-left: 2.5px solid currentColor;
+      border-bottom: 2.5px solid currentColor;
+      transform: rotate(45deg) translate(2px, -2px);
+    }
+
+    /* ===== SEARCH ===== */
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 16px 18px;
+      padding: 12px 14px;
+      background: var(--white);
+      border: 1.5px solid rgba(74, 50, 25, 0.28);
+      border-radius: var(--radius-md);
+    }
+
+    .search--muted { opacity: 0.6; }
+
+    .search__icon {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--brown-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .search__icon::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      background: var(--brown-light);
+      right: -7px;
+      bottom: -3px;
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+
+    .search__input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font: inherit;
+      font-size: 0.88rem;
+      color: var(--brown);
+      outline: none;
+    }
+    .search__input::placeholder { color: rgba(74, 50, 25, 0.45); }
+
+    /* ===== HERO CAROUSEL ===== */
+    .hero {
+      position: relative;
+      margin: 0 16px 22px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      background: var(--cream-deep);
+      border: 1.5px solid rgba(74, 50, 25, 0.18);
+    }
+
+    .hero__track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .hero__slide {
+      flex: 0 0 100%;
+      margin: 0;
+      height: 100%;
+    }
+    .hero__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero__arrow::before {
+      content: "";
+      display: block;
+      width: 9px;
+      height: 9px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+    }
+    .hero__arrow--prev { left: 10px; }
+    .hero__arrow--prev::before { transform: rotate(45deg) translate(2px, -2px); }
+    .hero__arrow--next { right: 10px; }
+    .hero__arrow--next::before { transform: rotate(-135deg) translate(2px, -2px); }
+
+    .hero__dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+    }
+
+    .hero__dot {
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      border: none;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+    }
+    .hero__dot--active { background: rgba(255, 255, 255, 0.95); }
+
+    /* ===== EAT × DRINK SEGMENT ===== */
+    .segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 6px 16px 22px;
+    }
+
+    .segment__btn {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.07em;
+      border: none;
+      background: transparent;
+      color: rgba(74, 50, 25, 0.38);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      padding: 0;
+    }
+
+    .segment__btn::before {
+      content: "";
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 56%;
+      opacity: 0.45;
+    }
+
+    .segment__btn[data-mode="eat"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a3219' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='15' rx='7' ry='4'/%3E%3Cpath d='M9 11V7M15 11V7M12 7v4'/%3E%3C/svg%3E");
+    }
+
+    .segment__btn[data-mode="drink"]::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a3219' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3h8l-1.5 10a4 4 0 0 1-5 0L8 3z'/%3E%3Cpath d='M7 7h10'/%3E%3Cpath d='M15 3c0-1 1-2 2-2'/%3E%3Ccircle cx='17' cy='1.5' r='1' fill='%234a3219'/%3E%3C/svg%3E");
+    }
+
+    .segment__btn.segment__btn--active {
+      color: var(--brown);
+    }
+    .segment__btn.segment__btn--active::before {
+      opacity: 1;
+      border-color: var(--brown);
+    }
+
+    .segment__x {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(74, 50, 25, 0.3);
+      line-height: 1;
+      margin-top: -8px;
+    }
+
+    /* ===== CATEGORY CARDS ===== */
+    .categories {
+      padding: 0 16px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .cat-card {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      align-items: center;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 18px 18px;
+      box-shadow: 0 6px 24px rgba(74, 50, 25, 0.07);
+      border: 1px solid rgba(74, 50, 25, 0.09);
+    }
+
+    .cat-card__img-wrap {
+      border-radius: 50%;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      max-width: 130px;
+      border: 2px solid rgba(74, 50, 25, 0.12);
+    }
+
+    .cat-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cat-card__body h3 {
+      margin: 0 0 7px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .cat-card__desc {
+      margin: 0 0 14px;
+      font-size: 0.8rem;
+      color: var(--brown-soft);
+      line-height: 1.5;
+    }
+
+    .cat-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid rgba(74, 50, 25, 0.4);
+      background: transparent;
+      padding: 8px 14px 8px 8px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--price-color);
+      cursor: pointer;
+    }
+
+    .cat-card__cta-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(74, 50, 25, 0.4);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .cat-card__cta-icon::before {
+      content: "";
+      width: 8px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 1px;
+    }
+    .cat-card__cta-icon::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-right: 2px solid var(--brown);
+      border-top: 2px solid var(--brown);
+      transform: rotate(45deg) translate(-1px, 1px);
+    }
+
+    /* ===== BOTTOM SHEET ===== */
+    .sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      visibility: hidden;
+      transition: visibility 0.3s;
+    }
+
+    .sheet[aria-hidden="false"] {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(74, 50, 25, 0.38);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .sheet[aria-hidden="false"]::before { opacity: 1; }
+
+    .sheet__panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: min(88vh, 740px);
+      background: var(--white);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 20px 18px calc(28px + var(--safe-bottom));
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+      overflow-y: auto;
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.14);
+    }
+
+    .sheet[aria-hidden="false"] .sheet__panel { transform: translateY(0); }
+
+    .sheet__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(74, 50, 25, 0.12);
+    }
+
+    .sheet__title {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .sheet__close {
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: transparent;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--brown-soft);
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(74, 50, 25, 0.1);
+    }
+
+    .menu-item__name {
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .menu-item__desc {
+      margin: 5px 0 0;
+      font-size: 0.76rem;
+      color: var(--brown-soft);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .menu-item__price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--price-color);
+      white-space: nowrap;
+      align-self: center;
+    }
+    .menu-item__price sup {
+      font-size: 0.52em;
+      font-weight: 700;
+      margin-left: 1px;
+      vertical-align: super;
+    }
+
+    /* Add to cart button — bag icon with + */
+    .menu-item__add {
+      width: 48px;
+      height: 52px;
+      border: none;
+      border-left: 1px solid rgba(74, 50, 25, 0.18);
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      color: var(--brown);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-item__add .add-bag {
+      display: block;
+      width: 26px;
+      height: 26px;
+      position: relative;
+    }
+    .menu-item__add .add-bag::before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid var(--brown);
+      border-radius: 4px 4px 8px 8px;
+    }
+    .menu-item__add .add-bag::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 10px;
+      border: 2px solid var(--brown);
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+    }
+    .menu-item__add .add-plus {
+      position: absolute;
+      bottom: 8px;
+      right: 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* ===== DRAWER ===== */
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: min(78vw, 280px);
+      background: var(--white);
+      z-index: 60;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      padding: 88px 24px 24px;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .drawer--open { transform: translateX(0); }
+
+    .drawer__backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(74, 50, 25, 0.38);
+      z-index: 55;
+    }
+
+    .drawer__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .drawer__link {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--brown-soft);
+      text-decoration: none;
+    }
+
+    .drawer__link--active {
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    /* ===== CART VIEW ===== */
+    .view--cart {
+      min-height: 100dvh;
+      padding-bottom: calc(80px + var(--safe-bottom));
+    }
+
+    .cart-title {
+      margin: 10px 16px 20px;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+    }
+
+    .cart-list {
+      list-style: none;
+      margin: 0;
+      padding: 0 16px;
+    }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(74, 50, 25, 0.1);
+    }
+
+    .cart-row__qty-num {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--brown);
+      min-width: 14px;
+    }
+
+    .cart-row__label {
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .cart-row__price {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--price-color);
+      white-space: nowrap;
+    }
+    .cart-row__price sup {
+      font-size: 0.52em;
+      margin-left: 1px;
+      vertical-align: super;
+    }
+
+    .cart-row__controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding-left: 10px;
+      border-left: 1px solid rgba(74, 50, 25, 0.18);
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 1.2rem;
+      font-weight: 400;
+      cursor: pointer;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-empty {
+      padding: 40px 16px;
+      text-align: center;
+      color: var(--brown-soft);
+      font-size: 0.95rem;
+    }
+
+    .cart-footer {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background: var(--footer-bar);
+      color: var(--cream);
+      padding: 20px 16px calc(20px + var(--safe-bottom));
+      text-align: center;
+    }
+
+    .cart-total {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+    }
+
+    @media (min-width: 520px) {
+      .hero { aspect-ratio: 16 / 9; }
+    }
+  </style>
 </head>
 <body>
+  <div id="app">
+    <!-- Drawer latéral -->
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <nav class="drawer__nav">
+        <a href="#" class="drawer__link drawer__link--active">Accueil</a>
+        <a href="#" class="drawer__link">À propos</a>
+        <a href="#" class="drawer__link">Galerie</a>
+        <a href="#" class="drawer__link">Contact</a>
+      </nav>
+    </aside>
+    <div class="drawer__backdrop" id="drawerBackdrop" hidden></div>
 
-    <!-- ============================================================
-         NAVBAR
-    ============================================================ -->
-    <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo">
-            <div class="nav-logo-badge">FR</div>
-            <span>Fezai Rayen</span>
-        </a>
+    <!-- Vue accueil -->
+    <main class="view view--home" id="viewHome">
+      <header class="header">
+        <button type="button" class="header__icon-btn" id="btnCart" aria-label="Panier">
+          <span class="icon-bag" aria-hidden="true"></span>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <h1 class="logo">À LA VILLA</h1>
+        <button type="button" class="header__menu-btn" id="btnMenu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </header>
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#expertise">Expertise</a></li>
-            <li><a href="#competences">Compétences</a></li>
-            <li><a href="#experiences">Expériences</a></li>
-            <li><a href="#projet">Projet</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+      <label class="search">
+        <span class="search__icon" aria-hidden="true"></span>
+        <input type="search" id="searchInput" class="search__input" placeholder="Rechercher un plat ou une boisson" autocomplete="off" />
+      </label>
 
-        <div class="nav-controls">
-            <div class="dark-mode-toggle" id="darkToggle" title="Changer le thème">🌙</div>
-            <div class="nav-hamburger" id="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <section class="hero" aria-label="Carrousel">
+        <div class="hero__track" id="heroTrack">
+          <figure class="hero__slide hero__slide--active">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Verres de vin" width="800" height="520" loading="eager" />
+          </figure>
+          <figure class="hero__slide">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Plat gastronomique" width="800" height="520" loading="lazy" />
+          </figure>
+          <figure class="hero__slide">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="Pizza" width="800" height="520" loading="lazy" />
+          </figure>
+          <figure class="hero__slide">
+            <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80" alt="Cocktails" width="800" height="520" loading="lazy" />
+          </figure>
         </div>
-    </nav>
+        <button type="button" class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Image précédente"></button>
+        <button type="button" class="hero__arrow hero__arrow--next" id="heroNext" aria-label="Image suivante"></button>
+        <div class="hero__dots" id="heroDots" role="tablist"></div>
+      </section>
 
-    <!-- ============================================================
-         HERO SECTION
-    ============================================================ -->
-    <section class="hero-section">
-        <div class="hero-glow-right"></div>
+      <div class="segment">
+        <button type="button" class="segment__btn segment__btn--active" data-mode="eat">EAT</button>
+        <span class="segment__x" aria-hidden="true">×</span>
+        <button type="button" class="segment__btn" data-mode="drink">DRINK</button>
+      </div>
 
-        <div class="hero-content">
-            <!-- Profile photo -->
-            <div class="profile-container">
-                <div class="profile-ring">
-                    <img class="profile-image" src="9bdb7549-28f4-4447-bf6c-9b5309881bf4.jpg" alt="Fezai Rayen — Photo de profil">
-                </div>
-                <div class="status-badge" title="Disponible"></div>
+      <section class="categories" id="categoryCards" aria-label="Catégories"></section>
+    </main>
+
+    <!-- Feuille menu (liste des plats) -->
+    <div class="sheet sheet--menu" id="menuSheet" aria-hidden="true">
+      <div class="sheet__panel">
+        <header class="sheet__head">
+          <h2 class="sheet__title" id="sheetTitle"></h2>
+          <button type="button" class="sheet__close" id="sheetClose" aria-label="Fermer">×</button>
+        </header>
+        <ul class="menu-list" id="menuList"></ul>
+      </div>
+    </div>
+
+    <!-- Vue panier -->
+    <main class="view view--cart hidden" id="viewCart">
+      <header class="header">
+        <button type="button" class="header__icon-btn" id="btnCartBack" aria-label="Retour au menu">
+          <span class="icon-arrow-back" aria-hidden="true"></span>
+        </button>
+        <h1 class="logo">À LA VILLA</h1>
+        <button type="button" class="header__menu-btn" id="btnMenuCart" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </header>
+      <label class="search search--muted">
+        <span class="search__icon" aria-hidden="true"></span>
+        <input type="search" class="search__input" placeholder="Rechercher un plat ou une boisson" disabled />
+      </label>
+      <h2 class="cart-title">Votre commande</h2>
+      <ul class="cart-list" id="cartList"></ul>
+      <footer class="cart-footer">
+        <p class="cart-total" id="cartTotal">Total: 0 DT</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    const MENU = {
+      eat: [
+        {
+          id: "entrees",
+          title: "ENTRÉES",
+          desc: "Des entrées raffinées pour ouvrir l'appétit avec élégance.",
+          image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
+          items: [
+            { id: "burrata",      name: "BURRATA",               desc: "Burrata crémeuse, tomates cerises, basilic frais, huile d'olive.", price: 28 },
+            { id: "carpaccio",    name: "CARPACCIO DE BŒUF",     desc: "Fines tranches de bœuf, parmesan, roquette, câpres.", price: 32 },
+            { id: "salade-cesar", name: "SALADE CÉSAR",          desc: "Romaine, croûtons, parmesan, sauce César maison.", price: 26 },
+            { id: "charcuterie",  name: "ASSIETTE DE CHARCUTERIE", desc: "Sélection de charcuteries italiennes, cornichons, pain grillé.", price: 34 },
+          ],
+        },
+        {
+          id: "pizzas",
+          title: "LES PIZZAS",
+          desc: "Parce que parfois, tout ce dont on a besoin, c'est d'un peu de magie ronde et croustillante.",
+          image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+          items: [
+            { id: "pz-margherita", name: "PIZZA MARGHERITA",    desc: "Sauce tomate, mozzarella, origan, huile d'olive.", price: 36 },
+            { id: "pz-gourmet",    name: "PIZZA GOURMET",       desc: "Roquette, basilic, blanc de poulet fumé, tomates cerises, parmesan.", price: 42 },
+            { id: "pz-tonno",      name: "PIZZA AL TONNO",      desc: "Crème de poivron doux rôti, thon, olives, oignons frits, ail confit.", price: 41 },
+            { id: "pz-mer",        name: "PIZZA FRUITS DE MER", desc: "Poulpe, calamars, fruits de mer selon arrivage.", price: 46 },
+          ],
+        },
+        {
+          id: "plats",
+          title: "NOS PLATS",
+          desc: "Des viandes et poissons préparés avec soin, pour un moment convivial.",
+          image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80",
+          items: [
+            { id: "mechoui", name: "CÔTELETTES D'AGNEAU", desc: "Cuisson rosée, jus corsé, légumes de saison.", price: 58 },
+            { id: "saumon",  name: "SAUMON GRILLÉ",       desc: "Citron confit, épinards, pommes grenailles.", price: 52 },
+          ],
+        },
+        {
+          id: "desserts",
+          title: "DESSERTS",
+          desc: "Une douce conclusion pour terminer le repas en beauté.",
+          image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80",
+          items: [
+            { id: "tiramisu",         name: "TIRAMISU",             desc: "Recette traditionnelle, mascarpone, café, cacao.", price: 18 },
+            { id: "panna-cotta",      name: "PANNA COTTA",          desc: "Vanille bourbon, coulis de fruits rouges.", price: 16 },
+            { id: "fondant-choco",    name: "FONDANT AU CHOCOLAT",  desc: "Cœur coulant, glace vanille maison.", price: 20 },
+            { id: "tarte-tatin",      name: "TARTE TATIN",          desc: "Pommes caramélisées, pâte feuilletée, crème fraîche.", price: 18 },
+          ],
+        },
+      ],
+      drink: [
+        {
+          id: "aperitivi",
+          title: "APERITIVI",
+          desc: "Pour commencer la soirée en douceur.",
+          image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80",
+          items: [
+            { id: "ricard-b",  name: "RICARD BOUTEILLE",          desc: "", price: 270 },
+            { id: "pastis-b",  name: "PASTIS BOUTEILLE",          desc: "", price: 270 },
+            { id: "pastis-51", name: "PASTIS 51, RICARD 4 CL",   desc: "", price: 18  },
+            { id: "martini",   name: "MARTINI ROSSO / BIANCO 5 CL", desc: "", price: 19 },
+            { id: "aperol",    name: "APEROL 5 CL",               desc: "", price: 20  },
+          ],
+        },
+        {
+          id: "cocktails",
+          title: "COCKTAILS",
+          desc: "Des créations originales pour éveiller vos sens.",
+          image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80",
+          items: [
+            { id: "mojito",        name: "MOJITO",         desc: "Rhum blanc, menthe fraîche, citron vert, soda.", price: 28 },
+            { id: "spritz-aperol", name: "SPRITZ APEROL",  desc: "Aperol, prosecco, splash soda, tranche d'orange.", price: 28 },
+            { id: "margarita",     name: "MARGARITA",      desc: "Tequila, triple sec, citron vert, sel.", price: 30 },
+            { id: "cosmopolitan",  name: "COSMOPOLITAN",   desc: "Vodka, triple sec, jus de cranberry, citron vert.", price: 30 },
+          ],
+        },
+        {
+          id: "vins",
+          title: "VINS AU VERRE",
+          desc: "Une sélection pour accompagner vos plats.",
+          image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80",
+          items: [
+            { id: "vin-blanc", name: "VIN BLANC MAISON", desc: "15 cl", price: 24 },
+            { id: "vin-rouge", name: "VIN ROUGE MAISON", desc: "15 cl", price: 24 },
+            { id: "rose",      name: "ROSÉ MAISON",      desc: "15 cl", price: 24 },
+          ],
+        },
+        {
+          id: "bieres",
+          title: "LES BIÈRES",
+          desc: "Fraîches et rafraîchissantes.",
+          image: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80",
+          items: [
+            { id: "biere-pression",  name: "BIÈRE PRESSION",  desc: "25 cl", price: 14 },
+            { id: "biere-bouteille", name: "BIÈRE BOUTEILLE", desc: "33 cl", price: 16 },
+          ],
+        },
+        {
+          id: "softs",
+          title: "SOFTS & JUS",
+          desc: "Boissons fraîches et jus pour tous les goûts.",
+          image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80",
+          items: [
+            { id: "eau-minerale",    name: "EAU MINÉRALE 50CL",   desc: "", price: 5  },
+            { id: "jus-orange",      name: "JUS D'ORANGE FRAIS",  desc: "Pressé à la commande.", price: 12 },
+            { id: "limonade",        name: "LIMONADE MAISON",     desc: "Citron, menthe, sirop de sucre.", price: 14 },
+            { id: "coca-cola",       name: "COCA-COLA",           desc: "33 cl", price: 8  },
+          ],
+        },
+        {
+          id: "boissons-chaudes",
+          title: "BOISSONS CHAUDES",
+          desc: "Pour finir en douceur ou commencer la journée.",
+          image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80",
+          items: [
+            { id: "cafe-espresso", name: "CAFÉ ESPRESSO",    desc: "", price: 6  },
+            { id: "cafe-creme",    name: "CAFÉ CRÈME",       desc: "", price: 8  },
+            { id: "the-menthe",    name: "THÉ À LA MENTHE",  desc: "Menthe fraîche, sucre.", price: 7  },
+            { id: "choco-chaud",   name: "CHOCOLAT CHAUD",   desc: "Chocolat noir, lait chaud, chantilly.", price: 10 },
+          ],
+        },
+      ],
+    };
+
+    const els = {
+      drawer: document.getElementById("drawer"),
+      drawerBackdrop: document.getElementById("drawerBackdrop"),
+      btnMenu: document.getElementById("btnMenu"),
+      btnMenuCart: document.getElementById("btnMenuCart"),
+      btnCart: document.getElementById("btnCart"),
+      btnCartBack: document.getElementById("btnCartBack"),
+      cartBadge: document.getElementById("cartBadge"),
+      viewHome: document.getElementById("viewHome"),
+      viewCart: document.getElementById("viewCart"),
+      categoryCards: document.getElementById("categoryCards"),
+      searchInput: document.getElementById("searchInput"),
+      heroTrack: document.getElementById("heroTrack"),
+      heroPrev: document.getElementById("heroPrev"),
+      heroNext: document.getElementById("heroNext"),
+      heroDots: document.getElementById("heroDots"),
+      menuSheet: document.getElementById("menuSheet"),
+      sheetTitle: document.getElementById("sheetTitle"),
+      sheetClose: document.getElementById("sheetClose"),
+      menuList: document.getElementById("menuList"),
+      cartList: document.getElementById("cartList"),
+      cartTotal: document.getElementById("cartTotal"),
+    };
+
+    let mode = "eat";
+    let heroIndex = 0;
+    let heroTimer = null;
+    let cart = loadCart();
+    let openSection = null;
+    let slideCount = 0;
+
+    function loadCart() {
+      try {
+        const raw = localStorage.getItem("alavilla-cart");
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      return {};
+    }
+
+    function saveCart() {
+      try { localStorage.setItem("alavilla-cart", JSON.stringify(cart)); } catch (_) {}
+    }
+
+    function cartCount() {
+      return Object.values(cart).reduce((s, x) => s + x.qty, 0);
+    }
+
+    function cartTotalAmount() {
+      return Object.values(cart).reduce((s, x) => s + x.price * x.qty, 0);
+    }
+
+    function formatMoney(n) {
+      try {
+        return new Intl.NumberFormat("fr-TN", { minimumFractionDigits: 0, maximumFractionDigits: 3 }).format(n);
+      } catch (_) {
+        return new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 3 }).format(n);
+      }
+    }
+
+    function updateBadge() {
+      els.cartBadge.textContent = String(cartCount());
+    }
+
+    function openDrawer() {
+      els.drawer.classList.add("drawer--open");
+      els.drawer.setAttribute("aria-hidden", "false");
+      els.drawerBackdrop.hidden = false;
+    }
+
+    function closeDrawer() {
+      els.drawer.classList.remove("drawer--open");
+      els.drawer.setAttribute("aria-hidden", "true");
+      els.drawerBackdrop.hidden = true;
+    }
+
+    function showHome() {
+      els.viewHome.classList.remove("hidden");
+      els.viewCart.classList.add("hidden");
+      closeDrawer();
+    }
+
+    function showCartView() {
+      els.viewHome.classList.add("hidden");
+      els.viewCart.classList.remove("hidden");
+      renderCart();
+      closeDrawer();
+    }
+
+    function normalize(s) {
+      return (s || "").toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
+    }
+
+    function matchesSearch(section, q) {
+      if (!q) return true;
+      const n = normalize(q);
+      if (normalize(section.title).includes(n)) return true;
+      if (normalize(section.desc).includes(n)) return true;
+      return section.items.some(it => normalize(it.name).includes(n) || normalize(it.desc).includes(n));
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderCategories() {
+      const q = els.searchInput.value.trim();
+      const sections = MENU[mode].filter(s => matchesSearch(s, q));
+      els.categoryCards.innerHTML = "";
+
+      if (sections.length === 0) {
+        const p = document.createElement("p");
+        p.className = "cart-empty";
+        p.textContent = "Aucun résultat pour cette recherche.";
+        els.categoryCards.appendChild(p);
+        return;
+      }
+
+      sections.forEach(section => {
+        const card = document.createElement("article");
+        card.className = "cat-card";
+        card.innerHTML = `
+          <div class="cat-card__img-wrap">
+            <img src="${escapeHtml(section.image)}" alt="" width="400" height="500" loading="lazy" />
+          </div>
+          <div class="cat-card__body">
+            <h3>${escapeHtml(section.title)}</h3>
+            ${section.desc ? `<p class="cat-card__desc">${escapeHtml(section.desc)}</p>` : ""}
+            <button type="button" class="cat-card__cta" data-section="${escapeHtml(section.id)}">
+              <span class="cat-card__cta-icon" aria-hidden="true"></span>
+              Voir le menu
+            </button>
+          </div>
+        `;
+        card.querySelector(".cat-card__cta").addEventListener("click", () => openSheet(section.id));
+        els.categoryCards.appendChild(card);
+      });
+    }
+
+    function findSection(id) {
+      const all = [...MENU.eat, ...MENU.drink];
+      return all.find(s => s.id === id) || null;
+    }
+
+    function openSheet(sectionId) {
+      const section = findSection(sectionId);
+      if (!section) return;
+      openSection = section;
+      els.sheetTitle.textContent = section.title;
+      renderSheetItems();
+      els.menuSheet.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSheet() {
+      openSection = null;
+      els.menuSheet.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function renderSheetItems() {
+      if (!openSection) return;
+      const q = els.searchInput.value.trim();
+      const items = openSection.items.filter(it => {
+        if (!q) return true;
+        const n = normalize(q);
+        return normalize(it.name).includes(n) || normalize(it.desc).includes(n);
+      });
+
+      els.menuList.innerHTML = "";
+
+      if (items.length === 0) {
+        const li = document.createElement("li");
+        li.className = "cart-empty";
+        li.style.padding = "24px 0";
+        li.textContent = "Aucun plat ne correspond à la recherche.";
+        els.menuList.appendChild(li);
+        return;
+      }
+
+      items.forEach(it => {
+        const li = document.createElement("li");
+        li.className = "menu-item";
+        li.innerHTML = `
+          <div>
+            <div class="menu-item__name">${escapeHtml(it.name)}</div>
+            ${it.desc ? `<p class="menu-item__desc">${escapeHtml(it.desc)}</p>` : ""}
+          </div>
+          <div class="menu-item__price">${formatMoney(it.price)}<sup>DT</sup></div>
+          <button type="button" class="menu-item__add" data-id="${escapeHtml(it.id)}" aria-label="Ajouter ${escapeHtml(it.name)} au panier">
+            <span class="add-bag" aria-hidden="true"></span>
+            <span class="add-plus" aria-hidden="true">+</span>
+          </button>
+        `;
+        li.querySelector(".menu-item__add").addEventListener("click", () => addToCart(it));
+        els.menuList.appendChild(li);
+      });
+    }
+
+    function addToCart(item) {
+      const key = item.id;
+      if (!cart[key]) {
+        cart[key] = { id: item.id, name: item.name, price: item.price, qty: 0 };
+      }
+      cart[key].qty += 1;
+      saveCart();
+      updateBadge();
+    }
+
+    function renderCart() {
+      els.cartList.innerHTML = "";
+      const lines = Object.values(cart).filter(x => x.qty > 0);
+
+      if (lines.length === 0) {
+        const li = document.createElement("li");
+        li.className = "cart-empty";
+        li.textContent = "Votre panier est vide.";
+        els.cartList.appendChild(li);
+      } else {
+        lines.forEach(line => {
+          const li = document.createElement("li");
+          li.className = "cart-row";
+          li.innerHTML = `
+            <span class="cart-row__qty-num">${line.qty}</span>
+            <span class="cart-row__label">${escapeHtml(line.name.toUpperCase())}</span>
+            <span class="cart-row__price">${formatMoney(line.price * line.qty)}<sup>DT</sup></span>
+            <div class="cart-row__controls">
+              <button type="button" class="qty-btn" data-act="plus" data-id="${escapeHtml(line.id)}" aria-label="Augmenter">+</button>
+              <button type="button" class="qty-btn" data-act="minus" data-id="${escapeHtml(line.id)}" aria-label="Diminuer">−</button>
             </div>
-
-            <!-- Eyebrow -->
-            <div class="hero-eyebrow">✦ Commerce International &amp; Distribution</div>
-
-            <!-- Name -->
-            <h1 class="hero-name">FEZAI <span>RAYEN</span></h1>
-
-            <!-- Subtitle -->
-            <p class="hero-subtitle">
-                Étudiant en Master Commerce &amp; Distribution<br>
-                Spécialiste en commerce international et optimisation logistique
-            </p>
-
-            <p class="hero-tagline">
-                "Allier expertise commerciale, analyse de données et digitalisation pour créer de la valeur dans les échanges internationaux"
-            </p>
-
-            <!-- Mission box -->
-            <div class="mission-box">
-                <div class="mission-label">✦ Ma Mission</div>
-                <p class="mission-text">
-                    Optimiser les processus commerciaux et logistiques grâce à la <strong style="color: var(--blue-light);">data</strong>,
-                    l'<strong style="color: var(--blue-light);">automatisation</strong> et les
-                    <strong style="color: var(--blue-light);">outils digitaux modernes</strong> — pour créer une valeur mesurable dans les échanges internationaux.
-                </p>
-            </div>
-
-            <!-- CTA buttons -->
-            <div class="hero-buttons">
-                <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-gold">🎥 Voir la Démo</a>
-                <a href="#projet" class="btn btn-primary">🚀 Projet Phare</a>
-                <a href="#contact" class="btn btn-outline">✉️ Me Contacter</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         EXPERTISE SECTION
-    ============================================================ -->
-    <section id="expertise" class="section section-alt fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Profil Professionnel</div>
-                <h2 class="section-title">Commerce International</h2>
-                <p class="section-subtitle">Diplômé en TCI de l'ISET Radès — Expert en digitalisation logistique et optimisation des chaînes d'approvisionnement internationales</p>
-            </div>
-
-            <div class="expertise-card">
-                <h3 class="expertise-header">🎯 Mon Expertise</h3>
-                <p class="expertise-text">
-                    Diplômé en <strong>Techniques du Commerce International (TCI)</strong> de l'ISET Radès, je me spécialise dans la
-                    <span style="color: var(--blue-light);">digitalisation logistique</span> et l'optimisation des chaînes d'approvisionnement internationales.
-                    Mon approche combine la maîtrise des flux commerciaux avec les outils technologiques modernes.
-                </p>
-                <p class="expertise-text">
-                    Ma valeur ajoutée : <span style="color: var(--gold);">transformer les défis commerciaux en opportunités digitales</span>
-                    grâce à l'analyse de données, l'automatisation des processus et les solutions sur mesure.
-                </p>
-                <div class="objective-box">
-                    <h4>🎯 Objectif Professionnel</h4>
-                    <p>Révolutionner les processus commerciaux par la digitalisation, l'analyse data et l'automatisation — pour maximiser la performance et la compétitivité internationale.</p>
-                </div>
-            </div>
-
-            <div class="areas-grid">
-                <div class="area-card">
-                    <div class="area-icon">🌍</div>
-                    <div class="area-title">Commerce International</div>
-                    <div class="area-desc">Import / Export</div>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon">📦</div>
-                    <div class="area-title">Logistique Digitale</div>
-                    <div class="area-desc">Optimisation flux</div>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon">📊</div>
-                    <div class="area-title">Data Analytics</div>
-                    <div class="area-desc">KPI & Reporting</div>
-                </div>
-                <div class="area-card">
-                    <div class="area-icon">🤖</div>
-                    <div class="area-title">Solutions Sur Mesure</div>
-                    <div class="area-desc">AI & Automation</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         COMPÉTENCES SECTION
-    ============================================================ -->
-    <section id="competences" class="section fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Savoir-Faire</div>
-                <h2 class="section-title">Mes Compétences</h2>
-                <p class="section-subtitle">Expertise polyvalente orientée business — du commerce international à la data analytics</p>
-            </div>
-
-            <div class="skills-grid">
-
-                <!-- 1. Commerce & Logistique — PRIORITÉ -->
-                <div class="skill-category priority">
-                    <div class="skill-header">
-                        <div class="skill-icon gold">🌐</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Commerce &amp; Logistique</div>
-                            <div class="skill-subtitle">Compétence principale</div>
-                        </div>
-                        <div class="skill-percent">95%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> Règlementations &amp; Incoterms</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Chaîne logistique globale</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Sourcing international</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Front &amp; Back Office</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Service multiculturel</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Droit commercial</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill gold" style="width: 95%"></div>
-                    </div>
-                    <div class="progress-label">95%</div>
-                </div>
-
-                <!-- 2. Marketing & Analyse -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">📈</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Marketing &amp; Analyse</div>
-                            <div class="skill-subtitle">Stratégie &amp; performance</div>
-                        </div>
-                        <div class="skill-percent">90%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> Stratégie marketing</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Marketing digital</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Réseaux sociaux</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Études de marché</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Analyse données &amp; KPI</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Compétences analytiques</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%"></div>
-                    </div>
-                    <div class="progress-label">90%</div>
-                </div>
-
-                <!-- 3. Data Analyst -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon gold">📊</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Data Analyst</div>
-                            <div class="skill-subtitle">Business Intelligence</div>
-                        </div>
-                        <div class="skill-percent">85%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> Power BI</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Analyse de données commerciales</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Création de dashboards</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> KPI &amp; reporting</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Business Intelligence</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Tableaux de bord interactifs</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill gold" style="width: 85%"></div>
-                    </div>
-                    <div class="progress-label">85%</div>
-                </div>
-
-                <!-- 4. Automation & IA -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">🤖</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Automation &amp; IA</div>
-                            <div class="skill-subtitle">Digitalisation des processus</div>
-                        </div>
-                        <div class="skill-percent">88%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> AI Automation</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> n8n — Workflow</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Automatisation processus</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Chatbots IA</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Optimisation workflow</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> RPA</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 88%"></div>
-                    </div>
-                    <div class="progress-label">88%</div>
-                </div>
-
-                <!-- 5. Outils Professionnels -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">⚙️</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Outils Professionnels</div>
-                            <div class="skill-subtitle">ERP, CRM &amp; plateformes</div>
-                        </div>
-                        <div class="skill-percent">90%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> ERP et CRM</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Plateformes logistiques</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Excel &amp; Power BI</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Adobe Creative Suite</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Git, Docker, AWS</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Agile / Scrum</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%"></div>
-                    </div>
-                    <div class="progress-label">90%</div>
-                </div>
-
-                <!-- 6. Compétences Techniques — MOINS DOMINANT -->
-                <div class="skill-category tech-secondary">
-                    <div class="skill-header">
-                        <div class="skill-icon">💻</div>
-                        <div class="skill-title-group">
-                            <div class="skill-title">Compétences Techniques</div>
-                            <div class="skill-subtitle">Au service du business</div>
-                        </div>
-                        <div class="skill-percent">92%</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li class="skill-item"><span class="check-icon">✦</span> HTML5, CSS3, JavaScript</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> React, Node, TypeScript</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> PHP, MySQL, PostgreSQL</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> UX/UI &amp; Responsive</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> API REST</li>
-                        <li class="skill-item"><span class="check-icon">✦</span> Architecture logicielle</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 92%"></div>
-                    </div>
-                    <div class="progress-label">92%</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         EXPÉRIENCES SECTION
-    ============================================================ -->
-    <section id="experiences" class="section section-alt fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Parcours</div>
-                <h2 class="section-title">Expériences</h2>
-                <p class="section-subtitle">Parcours diversifié en commerce international, service client et innovation digitale</p>
-            </div>
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="timeline-dot">🚢</div>
-                    <div class="exp-date-badge">Mai 2024 — Juin 2025</div>
-                    <h3 class="exp-title">Stagiaire — Service Commercial</h3>
-                    <p class="exp-company">SOCOTU Tunisie</p>
-                    <p class="exp-location">📍 Tunis, Tunisie</p>
-                    <p class="exp-desc">
-                        Développement et déploiement de <strong>CORAZÓN DIGITAL</strong> — solution complète de digitalisation des processus logistiques.
-                        Gestion de projet de bout en bout, coordination avec les équipes opérationnelles et optimisation des flux commerciaux.
-                    </p>
-                    <div class="exp-tags">
-                        <span class="exp-tag">Commerce</span>
-                        <span class="exp-tag">Logistique</span>
-                        <span class="exp-tag">Dev Web</span>
-                        <span class="exp-tag">Gestion projet</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot">🏨</div>
-                    <div class="exp-date-badge">2023 — 2024</div>
-                    <h3 class="exp-title">Serveur</h3>
-                    <p class="exp-company">Hôtel Mouradi Gammarth</p>
-                    <p class="exp-location">📍 Gammarth, Tunisie</p>
-                    <p class="exp-desc">
-                        Service client haut de gamme dans un environnement international. Gestion d'une clientèle multilingue et multiculturelle,
-                        développement des compétences en communication professionnelle et interculturelle.
-                    </p>
-                    <div class="exp-tags">
-                        <span class="exp-tag">Service client</span>
-                        <span class="exp-tag">Langues</span>
-                        <span class="exp-tag">Interculturel</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot">⛽</div>
-                    <div class="exp-date-badge">2022</div>
-                    <h3 class="exp-title">Responsable de Station</h3>
-                    <p class="exp-company">Shell Sejoumi</p>
-                    <p class="exp-location">📍 Sejoumi, Tunisie</p>
-                    <p class="exp-desc">
-                        Gestion opérationnelle d'une station de lavage. Optimisation des processus internes, management d'équipe
-                        et amélioration de la satisfaction client.
-                    </p>
-                    <div class="exp-tags">
-                        <span class="exp-tag">Management</span>
-                        <span class="exp-tag">Optimisation</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot">🎨</div>
-                    <div class="exp-date-badge">2019 — 2021</div>
-                    <h3 class="exp-title">Artisan</h3>
-                    <p class="exp-company">Carthage Salambo</p>
-                    <p class="exp-location">📍 Carthage, Tunisie</p>
-                    <p class="exp-desc">
-                        Création d'objets artisanaux tunisiens destinés à l'exportation internationale.
-                        Expérience directe des flux commerciaux export et des marchés étrangers.
-                    </p>
-                    <div class="exp-tags">
-                        <span class="exp-tag">Artisanat</span>
-                        <span class="exp-tag">Export</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         PROJET PHARE — CORAZÓN DIGITAL
-    ============================================================ -->
-    <section id="projet" class="section fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Réalisation Majeure</div>
-                <h2 class="section-title">Projet Phare — Impact Business</h2>
-                <p class="section-subtitle">Digitalisation complète des processus logistiques de SOCOTU — réduction des délais, optimisation des coûts et amélioration de la performance commerciale</p>
-            </div>
-
-            <div class="project-showcase">
-
-                <!-- Header -->
-                <div class="project-header">
-                    <div class="project-logo-icon">❤️</div>
-                    <h3 class="project-name">CORAZÓN DIGITAL</h3>
-                    <p class="project-tagline">Plateforme de Digitalisation Logistique — SOCOTU Tunisie</p>
-                    <div class="project-badges">
-                        <span class="project-badge badge-gold">🏆 Projet Principal</span>
-                        <span class="project-badge badge-blue">🏢 SOCOTU</span>
-                        <span class="project-badge badge-green">✅ 2024 — 2025</span>
-                    </div>
-                    <div style="margin-top: var(--sp-md);">
-                        <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-gold">
-                            🎥 Voir la Démo Complète
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Vision -->
-                <div class="project-vision">
-                    <div class="vision-label">⚡ Vision Stratégique</div>
-                    <p class="vision-text">
-                        Transformer les processus logistiques de SOCOTU en une <strong style="color: var(--blue-light);">expérience digitale fluide et performante</strong>.
-                        Automatiser la gestion documentaire, optimiser les opérations et offrir une visibilité totale sur les flux commerciaux — pour une compétitivité renforcée sur les marchés internationaux.
-                    </p>
-                </div>
-
-                <!-- Features — orientées résultats business -->
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <div class="feature-title">Gain de Temps</div>
-                        <div class="feature-result">-95% sur le traitement</div>
-                        <p class="feature-desc">Réduction drastique du temps de traitement des dossiers logistiques</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <div class="feature-title">Performance</div>
-                        <div class="feature-result">+40% d'efficacité</div>
-                        <p class="feature-desc">Amélioration mesurable de l'efficacité opérationnelle globale</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <div class="feature-title">Traçabilité</div>
-                        <div class="feature-result">100% des flux suivis</div>
-                        <p class="feature-desc">Visibilité totale sur les flux logistiques en temps réel</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <div class="feature-title">ROI</div>
-                        <div class="feature-result">Retour en 3 mois</div>
-                        <p class="feature-desc">Retour sur investissement rapide et mesurable</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👥</div>
-                        <div class="feature-title">Collaboration</div>
-                        <div class="feature-result">50+ utilisateurs</div>
-                        <p class="feature-desc">Connexions simultanées avec gestion des rôles et permissions</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <div class="feature-title">Disponibilité</div>
-                        <div class="feature-result">99.9% uptime</div>
-                        <p class="feature-desc">Infrastructure fiable avec haute disponibilité garantie</p>
-                    </div>
-                </div>
-
-                <!-- Tech stack -->
-                <div class="tech-stack">
-                    <div class="tech-label">Stack Technologique</div>
-                    <div class="tech-grid">
-                        <div class="tech-item">React.js</div>
-                        <div class="tech-item">Node.js</div>
-                        <div class="tech-item">PostgreSQL</div>
-                        <div class="tech-item">Docker</div>
-                        <div class="tech-item">TypeScript</div>
-                        <div class="tech-item">Tailwind</div>
-                        <div class="tech-item">Redis</div>
-                        <div class="tech-item">AWS</div>
-                    </div>
-                </div>
-
-                <!-- Impact stats -->
-                <div class="impact-stats">
-                    <div class="impact-item">
-                        <div class="impact-icon">⚡</div>
-                        <div class="impact-value">95%</div>
-                        <div class="impact-label">Réduction délais de traitement</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-icon">👥</div>
-                        <div class="impact-value">50+</div>
-                        <div class="impact-label">Utilisateurs connectés simultanément</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-icon">🛡️</div>
-                        <div class="impact-value">99.9%</div>
-                        <div class="impact-label">Disponibilité garantie</div>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="project-cta">
-                    <h4>Intéressé par une solution similaire ?</h4>
-                    <p>Créons ensemble des solutions digitales sur mesure pour optimiser vos processus commerciaux et logistiques.</p>
-                    <div class="project-cta-buttons">
-                        <a href="https://www.youtube.com/watch?v=hdC9AVbylBU&t=1s" target="_blank" class="btn btn-gold">🎥 Voir la Démo</a>
-                        <a href="#contact" class="btn btn-primary">💬 Discutons de votre projet</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         FORMATIONS SECTION
-    ============================================================ -->
-    <section class="section section-alt fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Éducation</div>
-                <h2 class="section-title">Formations</h2>
-                <p class="section-subtitle">Formation spécialisée en commerce international et technologies digitales</p>
-            </div>
-
-            <div class="formation-grid">
-                <div class="formation-card">
-                    <div class="formation-icon">🎓</div>
-                    <h3 class="formation-title">Licence TCI</h3>
-                    <p class="formation-school">ISET Radès</p>
-                    <p class="formation-year">2022 — 2025</p>
-                    <p class="formation-desc">Formation spécialisée en commerce international, logistique, incoterms et réglementations douanières.</p>
-                    <div class="competences-list">
-                        <span class="competence-badge">Commerce</span>
-                        <span class="competence-badge">Logistique</span>
-                        <span class="competence-badge">Incoterms</span>
-                        <span class="competence-badge">Douanes</span>
-                    </div>
-                </div>
-
-                <div class="formation-card">
-                    <div class="formation-icon">🇬🇧</div>
-                    <h3 class="formation-title">Anglais B2</h3>
-                    <p class="formation-school">Institut Bourguiba</p>
-                    <p class="formation-year">2023</p>
-                    <p class="formation-desc">Anglais professionnel orienté échanges commerciaux, négociation et communication internationale.</p>
-                    <div class="competences-list">
-                        <span class="competence-badge">Anglais commercial</span>
-                        <span class="competence-badge">Communication</span>
-                        <span class="competence-badge">Négociation</span>
-                    </div>
-                </div>
-
-                <div class="formation-card">
-                    <div class="formation-icon">💻</div>
-                    <h3 class="formation-title">Dev Web Full Stack</h3>
-                    <p class="formation-school">Udemy</p>
-                    <p class="formation-year">2023 — 2024</p>
-                    <p class="formation-desc">Développement web moderne appliqué au commerce et à la digitalisation des processus métier.</p>
-                    <div class="competences-list">
-                        <span class="competence-badge">HTML5</span>
-                        <span class="competence-badge">CSS3</span>
-                        <span class="competence-badge">JavaScript</span>
-                        <span class="competence-badge">PHP</span>
-                        <span class="competence-badge">MySQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         CONTACT SECTION
-    ============================================================ -->
-    <section id="contact" class="section fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <div class="section-eyebrow">✦ Collaboration</div>
-                <h2 class="section-title">Contact</h2>
-                <p class="section-subtitle">Digitalisons ensemble vos processus commerciaux et logistiques</p>
-            </div>
-
-            <div class="contact-grid">
-               <!-- Left: Info + Availability -->
-                <div>
-                    <h3 style="font-family: var(--font-heading); font-size: var(--font-lg); font-weight: 700; margin-bottom: var(--sp-md); color: var(--text-primary);">Informations de Contact</h3>
-
-                    <div class="contact-info-grid">
-                        <div class="contact-card">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <div class="contact-label">Téléphone</div>
-                                <div class="contact-value">+216 52 374 459</div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">💬</div>
-                            <div>
-                                <div class="contact-label">WhatsApp</div>
-                                <div class="contact-value"><a href="https://wa.me/21652374459" target="_blank">+216 52 374 459</a></div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">✉️</div>
-                            <div>
-                                <div class="contact-label">Email</div>
-                                <div class="contact-value"><a href="mailto:Fezai.rayen@gmail.com">Fezai.rayen@gmail.com</a></div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">💼</div>
-                            <div>
-                                <div class="contact-label">LinkedIn</div>
-                                <div class="contact-value"><a href="https://www.linkedin.com/in/fezai-raye-07934a34a/" target="_blank">Fezai Rayen</a></div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">📘</div>
-                            <div>
-                                <div class="contact-label">Facebook</div>
-                                <div class="contact-value"><a href="https://www.facebook.com/profile.php?id=100070361403118" target="_blank">Fezai Rayen</a></div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <div class="contact-label">Localisation</div>
-                                <div class="contact-value">Tunis, El Omrane</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="availability-card">
-                        <div class="availability-title">📅 Disponibilité</div>
-                        <div class="availability-item">
-                            <span>Délai de réponse</span>
-                            <strong>&lt; 24h</strong>
-                        </div>
-                        <div class="availability-item">
-                            <span>Consultation initiale</span>
-                            <strong>Gratuite</strong>
-                        </div>
-                        <div class="availability-item">
-                            <span>Places disponibles</span>
-                            <strong>2 — 3 projets</strong>
-                        </div>
-                        <div class="availability-item">
-                            <span>Langues</span>
-                            <strong>FR, EN, AR</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Form -->
-                <div class="contact-form">
-                    <div class="form-title">✉️ Envoyez un Message</div>
-                    <form action="mailto:Fezai.rayen@gmail.com" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="nom">Nom *</label>
-                            <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" placeholder="email@exemple.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="entreprise">Entreprise</label>
-                            <input type="text" id="entreprise" name="entreprise" placeholder="Votre entreprise (optionnel)">
-                        </div>
-                        <div class="form-group">
-                            <label for="sujet">Sujet *</label>
-                            <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre besoin..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">✉️ Envoyer le Message</button>
-                    </form>
-
-                    <div class="form-direct">
-                        <p>Ou contactez-moi directement :</p>
-                        <div class="form-direct-buttons">
-                            <a href="https://wa.me/21652374459" target="_blank" class="btn btn-outline" style="flex: 1; justify-content: center;">
-                                💬 WhatsApp
-                            </a>
-                            <a href="mailto:Fezai.rayen@gmail.com" class="btn btn-outline" style="flex: 1; justify-content: center;">
-                                ✉️ Email direct
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         FOOTER
-    ============================================================ -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <h3>Fezai Rayen</h3>
-                    <p>
-                        Spécialiste en Commerce International &amp; Distribution.<br>
-                        Expert en digitalisation logistique, data analytics et automatisation des processus commerciaux.
-                    </p>
-                </div>
-                <div class="footer-domains">
-                    <h4>Domaines d'Expertise</h4>
-                    <div class="footer-domain-list">
-                        <span class="footer-domain-item">Commerce International</span>
-                        <span class="footer-domain-item">Logistique Digitale</span>
-                        <span class="footer-domain-item">Data Analytics</span>
-                        <span class="footer-domain-item">AI Automation</span>
-                        <span class="footer-domain-item">Power BI</span>
-                        <span class="footer-domain-item">Business Intelligence</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 Fezai Rayen — Tous droits réservés.</p>
-                <div class="footer-tagline">
-                    <span>🌍</span>
-                    <span>Commerce International • Logistique Digitale • Data Analytics • AI Automation</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ============================================================
-         JAVASCRIPT
-    ============================================================ -->
-    <script>
-       /* ===== NAVBAR: scroll effect ===== */
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        /* ===== MOBILE HAMBURGER ===== */
-        const hamburger = document.getElementById('hamburger');
-        const navLinks  = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        // Close nav on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
+          `;
+          li.querySelectorAll(".qty-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+              const id = btn.getAttribute("data-id");
+              const act = btn.getAttribute("data-act");
+              adjustQty(id, act === "plus" ? 1 : -1);
             });
+          });
+          els.cartList.appendChild(li);
         });
+      }
 
-        /* ===== SMOOTH SCROLL ===== */
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offset = 60; // navbar height
-                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
+      const total = cartTotalAmount();
+      els.cartTotal.textContent = `Total: ${formatMoney(total)} DT`;
+      updateBadge();
+    }
+
+    function adjustQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) delete cart[id];
+      saveCart();
+      renderCart();
+    }
+
+    /* ===== CAROUSEL ===== */
+    function initHero() {
+      const slides = els.heroTrack.querySelectorAll(".hero__slide");
+      slideCount = slides.length;
+      els.heroDots.innerHTML = "";
+      slides.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "hero__dot" + (i === 0 ? " hero__dot--active" : "");
+        b.setAttribute("role", "tab");
+        b.setAttribute("aria-label", "Slide " + (i + 1));
+        b.addEventListener("click", () => goHero(i));
+        els.heroDots.appendChild(b);
+      });
+      updateHero();
+      startAutoplay();
+    }
+
+    function goHero(i) {
+      heroIndex = (i + slideCount) % slideCount;
+      updateHero();
+    }
+
+    function updateHero() {
+      els.heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+      els.heroDots.querySelectorAll(".hero__dot").forEach((d, i) => {
+        d.classList.toggle("hero__dot--active", i === heroIndex);
+      });
+    }
+
+    function startAutoplay() {
+      if (heroTimer) clearInterval(heroTimer);
+      heroTimer = setInterval(() => goHero(heroIndex + 1), 4000);
+    }
+
+    /* ===== SEGMENT EAT/DRINK ===== */
+    document.querySelectorAll(".segment__btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        mode = btn.getAttribute("data-mode") || "eat";
+        document.querySelectorAll(".segment__btn").forEach(b => {
+          b.classList.toggle("segment__btn--active", b === btn);
         });
+        renderCategories();
+        if (openSection) {
+          const still = MENU[mode].some(s => s.id === openSection.id) &&
+            matchesSearch(openSection, els.searchInput.value.trim());
+          if (!still) closeSheet();
+          else renderSheetItems();
+        }
+      });
+    });
 
-        /* ===== FADE-IN OBSERVER ===== */
-        const fadeObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    /* ===== EVENT LISTENERS ===== */
+    els.btnMenu.addEventListener("click", openDrawer);
+    els.btnMenuCart.addEventListener("click", openDrawer);
+    els.drawerBackdrop.addEventListener("click", closeDrawer);
 
-        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    els.btnCart.addEventListener("click", showCartView);
+    els.btnCartBack.addEventListener("click", showHome);
 
-        /* ===== PROGRESS BARS ANIMATION ===== */
-        const progressObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const bar = entry.target;
-                    const targetWidth = bar.dataset.width || bar.style.width;
-                    bar.style.width = '0';
-                    requestAnimationFrame(() => {
-                        setTimeout(() => {
-                            bar.style.width = targetWidth;
-                        }, 150);
-                    });
-                    progressObserver.unobserve(bar);
-                }
-            });
-        }, { threshold: 0.5 });
+    els.searchInput.addEventListener("input", () => {
+      renderCategories();
+      if (openSection) renderSheetItems();
+    });
 
-        document.querySelectorAll('.progress-fill').forEach(bar => {
-            bar.dataset.width = bar.style.width;
-            bar.style.width = '0';
-            progressObserver.observe(bar);
-        });
+    els.sheetClose.addEventListener("click", closeSheet);
+    els.menuSheet.addEventListener("click", e => {
+      if (e.target === els.menuSheet) closeSheet();
+    });
 
-        /* ===== DARK MODE TOGGLE ===== */
-        const darkToggle = document.getElementById('darkToggle');
-        let isDark = true;
+    els.heroPrev.addEventListener("click", () => { goHero(heroIndex - 1); startAutoplay(); });
+    els.heroNext.addEventListener("click", () => { goHero(heroIndex + 1); startAutoplay(); });
 
-        darkToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (!isDark) {
-                // Light mode
-                document.documentElement.style.setProperty('--bg-main', '#f0f4f8');
-                document.documentElement.style.setProperty('--bg-section', '#e8eef5');
-                document.documentElement.style.setProperty('--bg-card', 'rgba(0,0,0,0.04)');
-                document.documentElement.style.setProperty('--bg-card-hover', 'rgba(0,0,0,0.07)');
-                document.documentElement.style.setProperty('--border', 'rgba(0,0,0,0.1)');
-                document.documentElement.style.setProperty('--text-primary', '#0d1b2e');
-                document.documentElement.style.setProperty('--text-secondary', '#334155');
-                document.documentElement.style.setProperty('--text-muted', '#64748b');
-                document.body.style.background = '#f0f4f8';
-                darkToggle.textContent = '☀️';
-            } else {
-                // Dark mode (reset)
-                document.documentElement.style.setProperty('--bg-main', '#0d1b2e');
-                document.documentElement.style.setProperty('--bg-section', '#0f2040');
-                document.documentElement.style.setProperty('--bg-card', 'rgba(255,255,255,0.04)');
-                document.documentElement.style.setProperty('--bg-card-hover', 'rgba(255,255,255,0.07)');
-                document.documentElement.style.setProperty('--border', 'rgba(255,255,255,0.08)');
-                document.documentElement.style.setProperty('--text-primary', '#ffffff');
-                document.documentElement.style.setProperty('--text-secondary', '#94a3b8');
-                document.documentElement.style.setProperty('--text-muted', '#64748b');
-                document.body.style.background = '#0d1b2e';
-                darkToggle.textContent = '🌙';
-            }
-        });
+    /* Touch swipe */
+    let touchStartX = null;
+    els.heroTrack.addEventListener("touchstart", e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    els.heroTrack.addEventListener("touchend", e => {
+      if (touchStartX == null) return;
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      touchStartX = null;
+      if (dx > 50) { goHero(heroIndex - 1); startAutoplay(); }
+      else if (dx < -50) { goHero(heroIndex + 1); startAutoplay(); }
+    }, { passive: true });
 
-        /* ===== ACTIVE NAV LINK ON SCROLL ===== */
-        const sections = document.querySelectorAll('section[id]');
-        const navAnchors = document.querySelectorAll('.nav-links a');
-
-        const sectionObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navAnchors.forEach(a => {
-                        a.style.color = '';
-                        if (a.getAttribute('href') === '#' + id) {
-                            a.style.color = 'var(--gold)';
-                        }
-                    });
-                }
-            });
-        }, { threshold: 0.4 });
-
-        sections.forEach(s => sectionObserver.observe(s));
-    </script>
-
+    /* ===== INIT ===== */
+    initHero();
+    renderCategories();
+    updateBadge();
+  })();
+  </script>
 </body>
 </html>
