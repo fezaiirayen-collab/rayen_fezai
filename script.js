@@ -1,5 +1,5 @@
 /* ============================================================
-   Pardonne-moi Hebbouba — Interactive apology page
+   Pardonne-moi Habbouba — Interactive apology page
    ============================================================ */
 
 // ---------- Three.js guard ----------
