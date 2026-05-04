@@ -20,7 +20,7 @@ body {
   background: var(--bg);
   color: var(--title);
   font-family: Inter, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12.5px;
 }
 
 h1, h2, h3, .brand-title, .hero-card h1, .category-card h4 { font-family: "Bodoni Moda", serif; }
@@ -241,7 +241,7 @@ h1, h2, h3, .brand-title, .hero-card h1, .category-card h4 { font-family: "Bodon
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
-  font-size: 1.75rem;
+  font-size: 1.55rem;
   margin: 0.35rem 0 1rem;
 }
 
@@ -250,25 +250,71 @@ h1, h2, h3, .brand-title, .hero-card h1, .category-card h4 { font-family: "Bodon
   background: transparent;
   color: var(--white-3);
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 1.55rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  letter-spacing: 0.5px;
 }
 
 .tab-btn.active { color: var(--white); }
+
+.tab-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.tab-btn.active .tab-icon {
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.tab-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tab-sep {
+  color: rgba(255, 255, 255, 0.28);
+  font-weight: 600;
+  transform: translateY(-1px);
+}
 
 .categories-list { display: grid; gap: 1.1rem; }
 
 .category-card {
   display: grid;
-  grid-template-columns: 145px 1fr;
-  gap: 0.8rem;
+  grid-template-columns: 190px 1fr;
+  gap: 0.95rem;
   align-items: center;
 }
 
 .category-card img {
-  width: 145px;
-  height: 190px;
+  width: 190px;
+  height: 220px;
   border-radius: 48%/34%;
   object-fit: cover;
+}
+
+.category-card:nth-child(even) {
+  grid-template-columns: 1fr 190px;
+}
+
+.category-card:nth-child(even) img {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.category-card:nth-child(even) > div {
+  grid-column: 1;
+  text-align: right;
 }
 
 .category-card h4 {
@@ -280,12 +326,38 @@ h1, h2, h3, .brand-title, .hero-card h1, .category-card h4 { font-family: "Bodon
 .category-card p { margin: 0.2rem 0 0.6rem; }
 
 .view-btn {
-  border: 1px solid var(--line);
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.10);
-  border-radius: 4px;
-  padding: 0.45rem 0.6rem;
-  font-weight: 600;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.view-btn__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.10);
+}
+
+.view-btn__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.view-btn:active {
+  transform: translateY(1px);
+}
+
+.category-card:nth-child(even) .view-btn {
+  justify-content: flex-end;
 }
 
 .sheet {
