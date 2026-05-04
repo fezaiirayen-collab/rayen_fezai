@@ -105,7 +105,17 @@ function renderCategories() {
         <div>
           <h4>${cat.name}</h4>
           <p>${cat.text}</p>
-          <button class="view-btn" data-id="${cat.id}">Voir le menu</button>
+          <button class="view-btn" data-id="${cat.id}">
+            <span class="view-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4 12a1 1 0 0 1 1-1h9.6l-2.3-2.3a1 1 0 1 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 1 1-1.4-1.4l2.3-2.3H5a1 1 0 0 1-1-1Z"
+                />
+              </svg>
+            </span>
+            <span class="view-btn__label">Voir le menu</span>
+          </button>
         </div>
       </article>
     `
